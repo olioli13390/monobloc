@@ -53,6 +53,10 @@
 
 
             }
+
+            .btn-validate-update {
+                margin: 0;
+            }
         }
     }
 }
@@ -71,7 +75,12 @@
 
             .btn-container {
                 display: flex;
+                align-items: center;
                 gap: 10px;
+
+                .btn-validate-update {
+                    margin: 0;
+                }
             }
         }
     }
