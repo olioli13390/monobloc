@@ -1,0 +1,78 @@
+{% extends "../layout/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/settings.css">
+	<link rel="stylesheet" href="/assets/css/addworker.css">
+{% endblock %}
+
+{% block title %}
+	<title>Ajouter un utilisateur</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section>
+			<div class="form-container">
+				<form action={% if worker %} "/update/{{worker.id}}" {% else %} "" {% endif %} method="post">
+					<div class="input-label-containers">
+						<label for="firstName">Prénom *</label>
+						<input type="text" name="firstName" id="firstName" value="{{worker.firstName}}">
+					</div>
+					<div class="input-label-containers">
+						<label for="lastName">Nom *</label>
+						<input type="text" name="lastName" id="lastName" value="{{worker.lastName}}">
+					</div>
+					<div class="input-label-containers">
+						<label for="mail">Email *</label>
+						<input type="mail" name="mail" id="mail" value="{{worker.mail}}">
+					</div>
+					<div class="input-label-containers">
+						<label for="password">Mot de passe *</label>
+						<input type="text" name="password" id="password">
+					</div>
+					<div class="input-label-containers">
+						<label for="age">Age</label>
+						<input type="text" name="age" id="age" value="{{worker.age}}">
+					</div>
+					<div class="radio-containers">
+						<div>
+							<label for="woman">Femme</label>
+							<input type="radio" id="woman" name="gender" value="Femme">
+						</div>
+						<div>
+							<label for="man">Homme</label>
+							<input type="radio" id="man" name="gender" value="Homme">
+						</div>
+					</div>
+
+					<div id="computer-choice">
+						<select name="computer" id="computer">
+							<option value="">Aucun</option>
+							{% for computer in computers %}
+								<option value="{{computer.id}}">{{computer.adress}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class="btn-container">
+						<button class="btn-validate-update">
+							{% if worker %}
+								Modifier
+							{% else %}
+								Valider
+							{% endif %}
+						</button>
+					</div>
+					<p class="form-instructions">* Champs obligatoires</p>
+				</form>
+			</div>
+
+			<div class="btn-container">
+				<div class="btn-back">
+					<a href="/">Retour</a>
+				</div>
+			</div>
+
+		</section>
+	</main>
+{% endblock %}

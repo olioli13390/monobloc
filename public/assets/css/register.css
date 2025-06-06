@@ -1,0 +1,16 @@
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+
+}
+
+.btn-validate-update {
+    margin-top: 20px;
+    width: 50%;
+}
+
+.form-instructions {
+        margin: 0;
+    }

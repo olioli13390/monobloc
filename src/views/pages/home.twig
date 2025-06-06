@@ -1,0 +1,107 @@
+{% extends "../layout/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/settings.css">
+	<link rel="stylesheet" href="/assets/css/home.css">
+{% endblock %}
+
+{% block title %}
+	<title>Tableau de bord</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="welcome">
+			<div>
+				<h2>Gestion RH de
+					{{company.status}}</h2>
+			</div>
+			<div id="btn-add-container">
+				<div class="btn-add">
+					<a href="/addworker">Ajouter un travailleur</a>
+				</div>
+				<div class="btn-add">
+					<a href="/addcomputer">Ajouter un ordinateur</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="display-workers">
+			<h3>Liste des salariés</h3>
+			<div class="display-container">
+
+				{% for worker in workers %}
+					<div class="worker-card">
+						<div class="worker-info">
+							<h3>{{worker.firstName}}
+								{{worker.lastName}}</h3>
+							<p>{{worker.gender}}</p>
+							<p>{{worker.age}}
+								ans</p>
+							<p>{{worker.mail}}</p>
+							<p></p>
+							<p>
+								Ordinateur :
+								{{worker.computer.adress}}</p>
+						</div>
+
+						<div class="btn-update-delete">
+							<div>
+								<form action="/delete/{{worker.id}}" method="post">
+									<button class="btn-delete">Supprimer</button>
+								</form>
+							</div>
+							<div class="btn-update">
+								<form action="/update/{{worker.id}}" method="get">
+									<button class="btn-validate-update">Modifier</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+		</section>
+
+		<section id="display-computers">
+			<div class="tab-container">
+				<table>
+					<thead>
+						<tr class="titles">
+							<th>Ordinateurs</th>
+							<th>Utilisateurs</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for computer in computers %}
+							<tr>
+								<td>{{computer.adress}}</td>
+								{% if computer.worker %}
+									<td>{{computer.worker.firstName}}</td>
+								{% else %}
+									<td>-</td>
+								{% endif %}
+								<td>
+									<div class="btn-container">
+										<div>
+											<form action="/delete/computer/{{computer.id}}" method="post">
+												<button class="btn-delete">Supprimer</button>
+											</form>
+										</div>
+										<div>
+											<form action="/update/computer/{{computer.id}}" method="get">
+												<button class="btn-validate-update">Modifier</button>
+											</form>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+		</section>
+	</main>
+{% endblock %}

@@ -1,0 +1,8 @@
+model Computer {
+    id         Int      @id @default(autoincrement())
+    adress     String
+    company    Company? @relation(fields: [company_id], references: [id])
+    company_id Int?
+    worker     Worker?  @relation("WorkerComputer", fields: [worker_id], references: [id])
+    worker_id  Int?     @unique
+}

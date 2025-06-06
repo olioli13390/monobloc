@@ -1,0 +1,9 @@
+model Company {
+  id        Int        @id @default(autoincrement())
+  status    String
+  siret     String        @unique
+  password  String
+  name      String?
+  workers   Worker[]
+  computers Computer[]
+}

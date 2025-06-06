@@ -1,0 +1,32 @@
+{% extends "../layout/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/settings.css">
+	<link rel="stylesheet" href="/assets/css/login.css">
+{% endblock %}
+
+{% block title %}
+	<title>Créer un compte entreprise</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section>
+			<div class="form-container">
+				<form action="" method="post">
+					<div class="input-label-containers">
+						<label for="siret">Siret</label>
+						<input type="text" name="siret" id="siret">
+					</div>
+					<div class="input-label-containers">
+						<label for="password">Mot de passe</label>
+						<input type="password" name="password" id="password">
+					</div>
+					<div class="btn-container">
+						<button class="btn-validate-update">Se connecter</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+{% endblock %}

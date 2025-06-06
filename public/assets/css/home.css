@@ -1,0 +1,78 @@
+#welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    border-bottom: 1px solid #56638aaf;
+    gap: 40px;
+
+    h2 {
+        margin: 0;
+    }
+
+    #btn-add-container {
+        display: flex;
+        gap: 40px;
+
+        .btn-add {
+            background-color: #53DD6C;
+            padding: 10px;
+            border-radius: 5px;
+
+            a {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+    }
+}
+
+#display-workers {
+    margin: 20px;
+
+    .display-container {
+        display: flex;
+        gap: 40px;
+
+        .worker-card {
+            background-color: #56638a29;
+            width: 250px;
+            border-radius: 5px;
+
+            .btn-update-delete {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                margin: 10px 0;
+            }
+
+            .worker-info {
+                margin: 10px;
+
+
+            }
+        }
+    }
+}
+
+#display-computers {
+    margin: 20px;
+
+    .tab-container {
+        table {
+            width: 80%;
+            text-align: left;
+
+            tr {
+                border-bottom: 1px solid black;
+            }
+
+            .btn-container {
+                display: flex;
+                gap: 10px;
+            }
+        }
+    }
+}

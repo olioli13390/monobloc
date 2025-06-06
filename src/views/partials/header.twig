@@ -1,0 +1,24 @@
+<header>
+	<nav>
+		<h1>GestInfoPro</h1>
+		<ul>
+			{% if company %}
+				<li>
+					<a href="/logout">Déconnexion</a>
+				</li>
+				<li>
+					<a href="/profile">Profil</a>
+				</li>
+
+			{% else %}
+				<li>
+					<a href="/login">Se connecter</a>
+				</li>
+				<li>
+					<a href="/register">Créer un compte</a>
+				</li>
+			{% endif %}
+
+		</ul>
+	</nav>
+</header>
