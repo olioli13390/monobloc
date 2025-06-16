@@ -4,10 +4,13 @@
 		<ul>
 			{% if company %}
 				<li>
-					<a href="/logout">Déconnexion</a>
+					{% if company %}
+						<p>Bonjour,
+							{{company.status}}</p>
+					{% endif %}
 				</li>
 				<li>
-					<a href="/profile">Profil</a>
+					<a href="/logout">Déconnexion</a>
 				</li>
 
 			{% else %}
