@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 150px;
+    height: 300px;
     border-bottom: 1px solid #56638aaf;
     gap: 40px;
 
@@ -43,7 +43,7 @@
         width: 100%;
 
         th {
-            width: 15%;
+            width: 10%;
             padding: 5px;
         }
 
@@ -57,8 +57,17 @@
         }
     }
 
-    .btn-validate-update {
-        margin: 0;
+    .btn-container {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+
+        .btn-validate-update {
+            margin: 0;
+        }
     }
 
 }
@@ -81,8 +90,18 @@
                 border-bottom: 1px solid black;
             }
 
+            tr:hover {
+                background: #56638a10;
+            }
+
+            th {
+                width: 25%;
+            }
+
             .btn-container {
+      padding: 10px 0;
                 display: flex;
+               
                 align-items: center;
                 gap: 10px;
 

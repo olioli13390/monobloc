@@ -52,7 +52,7 @@
 								<td>{{worker.mail}}</td>
 								<td>{{worker.computer.adress}}</td>
 								<td>
-									<div>
+									<div class="btn-container">
 										<div>
 											<form action="/delete/{{worker.id}}" method="post">
 												<button class="btn-delete">Supprimer</button>
@@ -74,38 +74,38 @@
 			</div>
 
 			{# <div class="display-container">
-																																																							
-																																																											{% for worker in workers %}
-																																																												<div class="worker-card">
-																																																													<div class="worker-info">
-																																																														<h3>{{worker.firstName}}
-																																																															{{worker.lastName}}</h3>
-																																																														<p>{{worker.gender}}</p>
-																																																														<p>{{worker.age}}
-																																																															ans</p>
-																																																														<p>{{worker.mail}}</p>
-																																																														<p></p>
-																																																														<p>
-																																																															Ordinateur :
-																																																															{{worker.computer.adress}}</p>
-																																																													</div>
-																																																							
-																																																													<div class="btn-update-delete">
-																																																														<div>
-																																																															<form action="/delete/{{worker.id}}" method="post">
-																																																																<button class="btn-delete">Supprimer</button>
-																																																															</form>
-																																																														</div>
-																																																														<div class="btn-update">
-																																																															<form action="/update/{{worker.id}}" method="get">
-																																																																<button class="btn-validate-update">Modifier</button>
-																																																															</form>
-																																																														</div>
-																																																													</div>
-																																																												</div>
-																																																											{% endfor %}
-																																																							
-																																																										</div> #}
+																																																										
+																																																														{% for worker in workers %}
+																																																															<div class="worker-card">
+																																																																<div class="worker-info">
+																																																																	<h3>{{worker.firstName}}
+																																																																		{{worker.lastName}}</h3>
+																																																																	<p>{{worker.gender}}</p>
+																																																																	<p>{{worker.age}}
+																																																																		ans</p>
+																																																																	<p>{{worker.mail}}</p>
+																																																																	<p></p>
+																																																																	<p>
+																																																																		Ordinateur :
+																																																																		{{worker.computer.adress}}</p>
+																																																																</div>
+																																																										
+																																																																<div class="btn-update-delete">
+																																																																	<div>
+																																																																		<form action="/delete/{{worker.id}}" method="post">
+																																																																			<button class="btn-delete">Supprimer</button>
+																																																																		</form>
+																																																																	</div>
+																																																																	<div class="btn-update">
+																																																																		<form action="/update/{{worker.id}}" method="get">
+																																																																			<button class="btn-validate-update">Modifier</button>
+																																																																		</form>
+																																																																	</div>
+																																																																</div>
+																																																															</div>
+																																																														{% endfor %}
+																																																										
+																																																													</div> #}
 
 		</section>
 
