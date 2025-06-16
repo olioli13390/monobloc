@@ -30,41 +30,52 @@
 
 #display-workers {
     margin: 20px;
+    text-align: left;
+    border-bottom: 1px solid #56638aaf;
 
-    .display-container {
-        display: flex;
-        gap: 40px;
+    .header {
+        background: #56638aaf;
+    }
 
-        .worker-card {
-            background-color: #56638a29;
-            width: 250px;
-            border-radius: 5px;
+    table {
+        border-spacing: 0;
+        padding-bottom: 40px;
+        width: 100%;
 
-            .btn-update-delete {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                margin: 10px 0;
-            }
+        th {
+            width: 15%;
+            padding: 5px;
+        }
 
-            .worker-info {
-                margin: 10px;
-            }
+        tr {
+            padding: 2px;
 
-            .btn-validate-update {
-                margin: 0;
-            }
+        }
+
+        tr:hover {
+            background: #56638a10;
         }
     }
+
+    .btn-validate-update {
+        margin: 0;
+    }
+
 }
 
 #display-computers {
     margin: 20px;
 
+
     .tab-container {
         table {
-            width: 80%;
+            width: 50%;
             text-align: left;
+            border-spacing: 0;
+
+            .header {
+                background: #56638aaf;
+            }
 
             tr {
                 border-bottom: 1px solid black;
