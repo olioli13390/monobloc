@@ -1,13 +1,14 @@
 main {
     height: 100vh;
+    display: flex;
 }
 
 #table-views {
     height: 100%;
-    display: flex;
+    width: 30%;
 
     #tab-choice {
-        width: 20%;
+        height: 100%;
         border-right: 1px solid #56638aaf;
 
         .tab-choice-container {
@@ -48,126 +49,132 @@ main {
 
 }
 
-#display-board {
-    margin: 20px;
+.table-display {
+    height: 100%;
+    width: 75%;
 
-    h3 {
-        margin-top: 0;
-    }
+    #display-board {
+        margin: 20px;
 
-    #btn-add-container {
-        display: flex;
-        gap: 40px;
+        h3 {
+            margin-top: 0;
+        }
 
-        .btn-add {
-            background-color: #53DD6C;
-            padding: 10px;
-            border-radius: 5px;
+        #btn-add-container {
+            display: flex;
+            gap: 40px;
 
-            a {
-                height: 100%;
-                width: 100%;
+            .btn-add {
+                background-color: #53DD6C;
+                padding: 10px;
+                border-radius: 5px;
+
+                a {
+                    height: 100%;
+                    width: 100%;
+                }
             }
         }
     }
-}
 
-#display-workers {
-    h3 {
-        margin-top: 0;
-    }
+    #display-workers {
 
-    margin: 20px;
-    text-align: left;
-    border-bottom: 1px solid #56638aaf;
+        margin: 20px;
+        text-align: left;
+        border-bottom: 1px solid #56638aaf;
 
-    .header {
-        background: #56638aaf;
-    }
-
-    .header:hover {
-        background: #56638aaf;
-    }
-
-    table {
-        border-spacing: 0;
-        padding-bottom: 40px;
-        width: 100%;
-
-        th {
-            width: 10%;
-            padding: 5px;
+        h3 {
+            margin-top: 0;
         }
 
-        tr {
-            padding: 2px;
-
+        .header {
+            background: #56638aaf;
         }
 
-        tr:hover {
-            background: #56638a10;
+        .header:hover {
+            background: #56638aaf;
         }
-    }
 
-    .btn-container {
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
-
-        .btn-validate-update {
-            margin: 0;
-        }
-    }
-
-}
-
-#display-computers {
-    h3 {
-        margin-top: 0;
-    }
-
-    margin: 20px;
-
-
-    .tab-container {
         table {
-            width: 50%;
-            text-align: left;
             border-spacing: 0;
+            padding-bottom: 40px;
+            width: 100%;
 
-            .header {
-                background: #56638aaf;
+            th {
+                width: 10%;
+                padding: 5px;
             }
-
-            .header:hover {
-                background: #56638aaf;
-            }
-
 
             tr {
-                border-bottom: 1px solid black;
+                padding: 2px;
+
             }
 
             tr:hover {
                 background: #56638a10;
             }
+        }
 
-            th {
-                width: 25%;
+        .btn-container {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+
+            .btn-validate-update {
+                margin: 0;
             }
+        }
 
-            .btn-container {
-                padding: 10px 0;
-                display: flex;
+    }
 
-                align-items: center;
-                gap: 10px;
+    #display-computers {
+        h3 {
+            margin-top: 0;
+        }
 
-                .btn-validate-update {
-                    margin: 0;
+        margin: 20px;
+
+
+        .tab-container {
+            table {
+                width: 50%;
+                text-align: left;
+                border-spacing: 0;
+
+                .header {
+                    background: #56638aaf;
+                }
+
+                .header:hover {
+                    background: #56638aaf;
+                }
+
+
+                tr {
+                    border-bottom: 1px solid black;
+                }
+
+                tr:hover {
+                    background: #56638a10;
+                }
+
+                th {
+                    width: 25%;
+                }
+
+                .btn-container {
+                    padding: 10px 0;
+                    display: flex;
+
+                    align-items: center;
+                    gap: 10px;
+
+                    .btn-validate-update {
+                        margin: 0;
+                    }
                 }
             }
         }
