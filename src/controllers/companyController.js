@@ -47,7 +47,7 @@ exports.getLogin = async (req, res) => { /// affiche login
 }
 
 
-exports.postLogin = async (req, res) => { /// log une entreprise
+exports.postLogin = async (req, res) => { /// authentification d'une entreprise
     try {
         const company = await prisma.company.findUnique({
             where: {
@@ -57,15 +57,23 @@ exports.postLogin = async (req, res) => { /// log une entreprise
         if (company) {
             if (await bcrypt.compare(req.body.password, company.password)) {
                 req.session.company = company
-                res.redirect("/")
+                return res.redirect("/")
             } else {
-                throw ({ password: "Mot de passe incorrect" })
+                return res.render("pages/login.twig", {
+                    error: {
+                        password: "Mot de passe incorrect"
+                    }
+                })
             }
         } else {
-            throw ({ siret: "Siret inexistant" })
+            return res.render("pages/login.twig", {
+                error: {
+                    siret: "Siret inexistant"
+                }
+            })
         }
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }
 

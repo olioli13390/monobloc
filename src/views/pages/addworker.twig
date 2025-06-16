@@ -14,6 +14,23 @@
 		<section>
 			<div class="form-container">
 				<form action={% if worker %} "/update/{{worker.id}}" {% else %} "" {% endif %} method="post">
+					{% if error.firstName %}
+						<p class="error">
+							{{error.firstName}}
+						</p>
+					{% elseif error.lastName %}
+						<p class="error">
+							{{error.lastName}}
+						</p>
+					{% elseif error.mail %}
+						<p class="error">
+							{{error.mail}}
+						</p>
+					{% elseif error.age %}
+						<p class="error">
+							{{error.age}}
+						</p>
+					{% endif %}
 					<div class="input-label-containers">
 						<label for="firstName">Prénom *</label>
 						<input type="text" name="firstName" id="firstName" value="{{worker.firstName}}">
@@ -28,7 +45,7 @@
 					</div>
 					<div class="input-label-containers">
 						<label for="password">Mot de passe *</label>
-						<input type="text" name="password" id="password">
+						<input type="password" name="password" id="password">
 					</div>
 					<div class="input-label-containers">
 						<label for="age">Age</label>

@@ -21,6 +21,9 @@
 					{% endif %}
 				</h2>
 				<form action={% if computer %} "/update/computer/{{computer.id}}" {% else %} "" {% endif %} method="post">
+					{% if error.adress %}
+						<p class="error">{{error.adress}}</p>
+					{% endif %}
 					<div class="input-label-containers">
 						<label for="adress">Adresse MAC *</label>
 						<input type="text" name="adress" id="adress" value="{{computer.adress}}">
@@ -34,10 +37,6 @@
 							{% endif %}
 						</button>
 					</div>
-					{% if error.adress %}
-						<p class="error">{{error.adress}}</p>
-					{% endif %}
-
 					<p class="form-instructions">* Champs obligatoires</p>
 				</form>
 			</div>

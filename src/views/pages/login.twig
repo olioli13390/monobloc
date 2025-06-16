@@ -14,6 +14,15 @@
 		<section>
 			<div class="form-container">
 				<form action="" method="post">
+					{% if error.password %}
+						<p class="error">
+							{{error.password}}
+						</p>
+					{% elseif error.siret%}
+						<p class="error">
+							{{error.siret}}
+						</p>
+					{% endif %}
 					<div class="input-label-containers">
 						<label for="siret">Siret</label>
 						<input type="text" name="siret" id="siret">

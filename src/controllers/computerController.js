@@ -59,9 +59,19 @@ exports.getUpdateComputer = async (req, res) => { // affiche la modif
 
 exports.postUpdateComputer = async (req, res) => { // post update computer
     try {
+
+        const initialComputer = await prisma.computer.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
         if (!req.body.adress.match(/^([0-9A-Fa-f]{2}[:-]){4}([0-9A-Fa-f]{2})$/
         )) {
-            throw ({ adress: "Adresse MAC invalide" })
+            return res.render("pages/addcomputer.twig", {
+                error: {
+                    adress: "Adresse MAC incorrecte"
+                }, computer: initialComputer
+            })
         }
         const computer = await prisma.computer.update({
             where: {
@@ -75,7 +85,11 @@ exports.postUpdateComputer = async (req, res) => { // post update computer
         res.redirect('/')
 
     } catch (error) {
-        console.log(error);
-
+        console.log(error)
+        const computer = await prisma.computer.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
     }
 }
