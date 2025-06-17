@@ -3,6 +3,7 @@ const prisma = new PrismaClient({})
 
 exports.getHome = async (req, res) => { // affiche dashboard + load workers
     try {
+
         const company = await prisma.company.findUnique({
             where: {
                 siret: req.session.company.siret
@@ -11,6 +12,9 @@ exports.getHome = async (req, res) => { // affiche dashboard + load workers
                 workers: {
                     include: {
                         computer: true
+                    },
+                    orderBy: {
+                        lastName: "asc"
                     }
                 },
                 computers: {
@@ -79,26 +83,4 @@ exports.getAddWorker = async (req, res) => { // affiche la page addworker
 exports.getAddComputer = async (req, res) => { // affiche la page addcomputer
     res.render("pages/addcomputer.twig", { company: req.session.company })
 
-}
-
-exports.getRecentWorkers = async (req, res) => {
-    try {
-        const recentWorkers = await prisma.worker.findMany({
-            where: {
-                companySiret: req.session.company.siret
-            },
-            include: {
-                computer: true
-            },
-            orderBy: {
-                createdAt: 'desc'
-            },
-            take: 3
-        })
-
-        res.render('pages/recentWorkers.twig', { workers: recentWorkers })
-    } catch (error) {
-        console.log(error)
-        res.status(500).send('Une erreur est survenue')
-    }
 }
