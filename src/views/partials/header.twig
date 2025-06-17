@@ -5,12 +5,12 @@
 			{% if company %}
 				<li>
 					{% if company %}
-						<p>Bonjour,
+						<p id="welcome-message">Bonjour,
 							{{company.status}}</p>
 					{% endif %}
 				</li>
 				<li>
-					<a href="/logout">Déconnexion</a>
+					<a id="logout" href="/logout">Déconnexion</a>
 				</li>
 
 			{% else %}

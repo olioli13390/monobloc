@@ -50,6 +50,35 @@ header {
         p {
             margin: 0;
         }
+
+        #welcome-message {
+            font-weight: 100;
+        }
+
+        #logout {
+            position: relative;
+            text-decoration: none;
+        }
+
+        #logout::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #8a5a56;
+            transition: width 0.3s ease;
+        }
+
+        #logout:hover {
+            color: #8a5a56;
+            transition: color 0.2s;
+        }
+
+        #logout:hover::after {
+            width: 100%;
+        }
     }
 }
 
