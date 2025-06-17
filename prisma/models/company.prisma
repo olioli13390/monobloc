@@ -4,6 +4,8 @@ model Company {
   siret     String        @unique
   password  String
   name      String?
+  createdAt   DateTime      @default(now())
   workers   Worker[]
   computers Computer[]
+  
 }

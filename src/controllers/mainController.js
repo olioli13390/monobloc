@@ -20,7 +20,41 @@ exports.getHome = async (req, res) => { // affiche dashboard + load workers
                 }
             }
         })
-        res.render('pages/home.twig', { company: req.session.company, workers: company.workers, computers: company.computers })
+        const formattedCreateAt = company.createdAt.toLocaleDateString('fr-FR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        })
+
+        company.formattedCreateAt = formattedCreateAt
+
+        const recentWorkers = await prisma.worker.findMany({
+            where: {
+                company_id: company.id
+            },
+            include: {
+                computer: true
+            },
+            orderBy: {
+                createdAt: 'desc'
+            },
+            take: 3
+        })
+
+        const formattedRecentWorkers = recentWorkers.map(worker => {
+            const formattedWorkerCreateAt = worker.createdAt.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            return {
+                ...worker,
+                formattedWorkerCreateAt: formattedWorkerCreateAt
+            };
+        });
+
+
+        res.render('pages/home.twig', { company: company, workers: company.workers, computers: company.computers, recentWorkers: formattedRecentWorkers })
     } catch (error) {
         console.log(error);
     }
@@ -45,4 +79,26 @@ exports.getAddWorker = async (req, res) => { // affiche la page addworker
 exports.getAddComputer = async (req, res) => { // affiche la page addcomputer
     res.render("pages/addcomputer.twig", { company: req.session.company })
 
+}
+
+exports.getRecentWorkers = async (req, res) => {
+    try {
+        const recentWorkers = await prisma.worker.findMany({
+            where: {
+                companySiret: req.session.company.siret
+            },
+            include: {
+                computer: true
+            },
+            orderBy: {
+                createdAt: 'desc'
+            },
+            take: 3
+        })
+
+        res.render('pages/recentWorkers.twig', { workers: recentWorkers })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('Une erreur est survenue')
+    }
 }

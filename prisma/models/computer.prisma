@@ -1,6 +1,7 @@
 model Computer {
     id         Int      @id @default(autoincrement())
     adress     String
+    createdAt  DateTime @default(now())
     company    Company? @relation(fields: [company_id], references: [id])
     company_id Int?
     worker     Worker?  @relation("WorkerComputer", fields: [worker_id], references: [id])

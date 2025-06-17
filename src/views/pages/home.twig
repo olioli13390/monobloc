@@ -32,147 +32,183 @@
 				</div>
 			</section>
 		</div>
+		<div id="table-display">
+			<section id="display-board">
+				<div id="add-btn-container">
+					<h3>Tableau de bord</h3>
+					<div class="board-container">
+						<div id="btn-add-container">
+							<div class="btn-add">
+								<a href="/addworker">Ajouter un travailleur</a>
+							</div>
+							<div class="btn-add">
+								<a href="/addcomputer">Ajouter un ordinateur</a>
+							</div>
+						</div>
+					</div>
+					<div id="company-info">
+						<h4>Vos informations</h4>
+						<div class="info-container">
+							<p>{{company.status}}</p>
+							<p>{{company.name}}</p>
+							<p>{{company.formattedCreateAt}}</p>
+						</div>
+					</div>
+
+					<div class="recent-add-workers">
+						<h4>Vos ajouts récents d'employés</h4>
+
+						<table>
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>Prénom</th>
+									<th>Salarié depuis</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for worker in recentWorkers %}
+									<tr>
+										<td>{{worker.firstName}}</td>
+										<td>{{worker.lastName}}</td>
+										<td>{{worker.formattedWorkerCreateAt}}</td>
+									</tr>
+
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 
 
-		<section id="display-board">
-			<h3>Tableau de bord</h3>
-			<div class="board-container"></div>
-			<div id="btn-add-container">
-				<div class="btn-add">
-					<a href="/addworker">Ajouter un travailleur</a>
 				</div>
-				<div class="btn-add">
-					<a href="/addcomputer">Ajouter un ordinateur</a>
+			</section>
+
+			<section id="display-workers" class="hidden">
+				<h3>Liste des salariés</h3>
+
+				<div class="tab-container">
+					<table>
+						<thead>
+							<tr class='header'>
+								<th>Nom</th>
+								<th>Prénom</th>
+								<th>Genre</th>
+								<th>Âge</th>
+								<th>Email</th>
+								<th>Ordinateur</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for worker in workers %}
+
+								<tr>
+									<td>{{worker.lastName}}</td>
+									<td>{{worker.firstName}}</td>
+									<td>{{worker.gender}}</td>
+									<td>{{worker.age}}</td>
+									<td>{{worker.mail}}</td>
+									<td>{{worker.computer.adress}}</td>
+									<td>
+										<div class="btn-container">
+											<div>
+												<form action="/delete/{{worker.id}}" method="post">
+													<button class="btn-delete">Supprimer</button>
+												</form>
+											</div>
+											<div class="btn-update">
+												<form action="/update/{{worker.id}}" method="get">
+													<button class="btn-validate-update">Modifier</button>
+												</form>
+											</div>
+										</div>
+									</td>
+								</tr>
+
+
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
-			</div>
-		</section>
 
-		<section id="display-workers" class="hidden">
-			<h3>Liste des salariés</h3>
+				{# <div class="display-container">
+																																																																																																																																																																																																																																																																																																																																																																																						
+																																																																																																																																																																																																																																																																																																																																																																																										{% for worker in workers %}
+																																																																																																																																																																																																																																																																																																																																																																																											<div class="worker-card">
+																																																																																																																																																																																																																																																																																																																																																																																												<div class="worker-info">
+																																																																																																																																																																																																																																																																																																																																																																																													<h3>{{worker.firstName}}
+																																																																																																																																																																																																																																																																																																																																																																																														{{worker.lastName}}</h3>
+																																																																																																																																																																																																																																																																																																																																																																																													<p>{{worker.gender}}</p>
+																																																																																																																																																																																																																																																																																																																																																																																													<p>{{worker.age}}
+																																																																																																																																																																																																																																																																																																																																																																																														ans</p>
+																																																																																																																																																																																																																																																																																																																																																																																													<p>{{worker.mail}}</p>
+																																																																																																																																																																																																																																																																																																																																																																																													<p></p>
+																																																																																																																																																																																																																																																																																																																																																																																													<p>
+																																																																																																																																																																																																																																																																																																																																																																																														Ordinateur :
+																																																																																																																																																																																																																																																																																																																																																																																														{{worker.computer.adress}}</p>
+																																																																																																																																																																																																																																																																																																																																																																																												</div>
+																																																																																																																																																																																																																																																																																																																																																																																						
+																																																																																																																																																																																																																																																																																																																																																																																												<div class="btn-update-delete">
+																																																																																																																																																																																																																																																																																																																																																																																													<div>
+																																																																																																																																																																																																																																																																																																																																																																																														<form action="/delete/{{worker.id}}" method="post">
+																																																																																																																																																																																																																																																																																																																																																																																															<button class="btn-delete">Supprimer</button>
+																																																																																																																																																																																																																																																																																																																																																																																														</form>
+																																																																																																																																																																																																																																																																																																																																																																																													</div>
+																																																																																																																																																																																																																																																																																																																																																																																													<div class="btn-update">
+																																																																																																																																																																																																																																																																																																																																																																																														<form action="/update/{{worker.id}}" method="get">
+																																																																																																																																																																																																																																																																																																																																																																																															<button class="btn-validate-update">Modifier</button>
+																																																																																																																																																																																																																																																																																																																																																																																														</form>
+																																																																																																																																																																																																																																																																																																																																																																																													</div>
+																																																																																																																																																																																																																																																																																																																																																																																												</div>
+																																																																																																																																																																																																																																																																																																																																																																																											</div>
+																																																																																																																																																																																																																																																																																																																																																																																										{% endfor %}
+																																																																																																																																																																																																																																																																																																																																																																																						
+																																																																																																																																																																																																																																																																																																																																																																																									</div> #}
 
-			<div class="tab-container">
-				<table>
-					<thead>
-						<tr class='header'>
-							<th>Nom</th>
-							<th>Prénom</th>
-							<th>Genre</th>
-							<th>Âge</th>
-							<th>Email</th>
-							<th>Ordinateur</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for worker in workers %}
+			</section>
 
-							<tr>
-								<td>{{worker.lastName}}</td>
-								<td>{{worker.firstName}}</td>
-								<td>{{worker.gender}}</td>
-								<td>{{worker.age}}</td>
-								<td>{{worker.mail}}</td>
-								<td>{{worker.computer.adress}}</td>
-								<td>
-									<div class="btn-container">
-										<div>
-											<form action="/delete/{{worker.id}}" method="post">
-												<button class="btn-delete">Supprimer</button>
-											</form>
-										</div>
-										<div class="btn-update">
-											<form action="/update/{{worker.id}}" method="get">
-												<button class="btn-validate-update">Modifier</button>
-											</form>
-										</div>
-									</div>
-								</td>
+			<section id="display-computers" class="hidden">
+				<h3>Liste des ordinateurs</h3>
+				<div class="tab-container">
+					<table>
+						<thead>
+							<tr class="header">
+								<th>Ordinateurs</th>
+								<th>Utilisateurs</th>
+								<th>Action</th>
 							</tr>
-
-
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-
-			{# <div class="display-container">
-																																																																																																																																																																																																																																																	
-																																																																																																																																																																																																																																																					{% for worker in workers %}
-																																																																																																																																																																																																																																																						<div class="worker-card">
-																																																																																																																																																																																																																																																							<div class="worker-info">
-																																																																																																																																																																																																																																																								<h3>{{worker.firstName}}
-																																																																																																																																																																																																																																																									{{worker.lastName}}</h3>
-																																																																																																																																																																																																																																																								<p>{{worker.gender}}</p>
-																																																																																																																																																																																																																																																								<p>{{worker.age}}
-																																																																																																																																																																																																																																																									ans</p>
-																																																																																																																																																																																																																																																								<p>{{worker.mail}}</p>
-																																																																																																																																																																																																																																																								<p></p>
-																																																																																																																																																																																																																																																								<p>
-																																																																																																																																																																																																																																																									Ordinateur :
-																																																																																																																																																																																																																																																									{{worker.computer.adress}}</p>
-																																																																																																																																																																																																																																																							</div>
-																																																																																																																																																																																																																																																	
-																																																																																																																																																																																																																																																							<div class="btn-update-delete">
-																																																																																																																																																																																																																																																								<div>
-																																																																																																																																																																																																																																																									<form action="/delete/{{worker.id}}" method="post">
-																																																																																																																																																																																																																																																										<button class="btn-delete">Supprimer</button>
-																																																																																																																																																																																																																																																									</form>
-																																																																																																																																																																																																																																																								</div>
-																																																																																																																																																																																																																																																								<div class="btn-update">
-																																																																																																																																																																																																																																																									<form action="/update/{{worker.id}}" method="get">
-																																																																																																																																																																																																																																																										<button class="btn-validate-update">Modifier</button>
-																																																																																																																																																																																																																																																									</form>
-																																																																																																																																																																																																																																																								</div>
-																																																																																																																																																																																																																																																							</div>
-																																																																																																																																																																																																																																																						</div>
-																																																																																																																																																																																																																																																					{% endfor %}
-																																																																																																																																																																																																																																																	
-																																																																																																																																																																																																																																																				</div> #}
-
-		</section>
-
-		<section id="display-computers" class="hidden">
-			<h3>Liste des ordinateurs</h3>
-			<div class="tab-container">
-				<table>
-					<thead>
-						<tr class="header">
-							<th>Ordinateurs</th>
-							<th>Utilisateurs</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for computer in computers %}
-							<tr>
-								<td>{{computer.adress}}</td>
-								{% if computer.worker %}
-									<td>{{computer.worker.firstName}}</td>
-								{% else %}
-									<td>-</td>
-								{% endif %}
-								<td>
-									<div class="btn-container">
-										<div>
-											<form action="/delete/computer/{{computer.id}}" method="post">
-												<button class="btn-delete">Supprimer</button>
-											</form>
+						</thead>
+						<tbody>
+							{% for computer in computers %}
+								<tr>
+									<td>{{computer.adress}}</td>
+									{% if computer.worker %}
+										<td>{{computer.worker.firstName}}</td>
+									{% else %}
+										<td>-</td>
+									{% endif %}
+									<td>
+										<div class="btn-container">
+											<div>
+												<form action="/delete/computer/{{computer.id}}" method="post">
+													<button class="btn-delete">Supprimer</button>
+												</form>
+											</div>
+											<div>
+												<form action="/update/computer/{{computer.id}}" method="get">
+													<button class="btn-validate-update">Modifier</button>
+												</form>
+											</div>
 										</div>
-										<div>
-											<form action="/update/computer/{{computer.id}}" method="get">
-												<button class="btn-validate-update">Modifier</button>
-											</form>
-										</div>
-									</div>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 
-		</section>
-
+			</section>
+		</div>
 	</main>
 {% endblock %}
 
