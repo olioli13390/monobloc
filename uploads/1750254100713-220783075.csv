@@ -1,0 +1,63 @@
+levelType,code,catalogType,name,description
+CATEGORY,Street Lighting,PRODUCT,Street Lighting,Category code for Street Lighting
+CATEGORY,Pedestrian Lighting,PRODUCT,Pedestrian Lighting,Category code for Pedestrian Lighting
+CATEGORY,Traffic Signal Poles,PRODUCT,Traffic Signal Poles,Category code for Traffic Signal Poles
+CATEGORY,Controls,PRODUCT,Controls,Category code for Controls
+CATEGORY,Downlights,PRODUCT,Downlights,Category code for Downlights
+CATEGORY,Retrofit Downlights,PRODUCT,Retrofit Downlights,Category code for Retrofit Downlights
+CATEGORY,Ambient,PRODUCT,Ambient,Category code for Ambient
+CATEGORY,Bulbs,PRODUCT,Bulbs,Category code for Bulbs
+CATEGORY,Controllers,PRODUCT,Controllers,Category code for Controllers
+CATEGORY,Enclosures,PRODUCT,Enclosures,Category code for Enclosures
+CATEGORY,High Voltage Electrical,PRODUCT,High Voltage Electrical,Category code for High Voltage Electrical
+CATEGORY,Lenses,PRODUCT,Lenses,Category code for Lenses
+CATEGORY,Luminaire,PRODUCT,Luminaire,Category code for Luminaire
+CATEGORY,Mechanicals,PRODUCT,Mechanicals,Category code for Mechanicals
+CATEGORY,Primary Chassis,PRODUCT,Primary Chassis,Category code for Primary Chassis
+CATEGORY,Primary Foundation,PRODUCT,Primary Foundation,Category code for Primary Foundation
+CATEGORY,Secondary Chassis,PRODUCT,Secondary Chassis,Category code for Secondary Chassis
+BRAND,Public Sector,PRODUCT,Public Sector,Brand code for Public Sector
+BRAND,Commercial,PRODUCT,Commercial,Brand code for Commercial
+FAMILY,Alliance,PRODUCT,Alliance,Family code for Alliance
+FAMILY,Helm,PRODUCT,Helm,Family code for Helm
+FAMILY,Flatbush Avenue,PRODUCT,Flatbush Avenue,Family code for Flatbush Avenue
+FAMILY,Bishops Crook,PRODUCT,Bishops Crook,Family code for Bishops Crook
+FAMILY,City Light,PRODUCT,City Light,Family code for City Light
+FAMILY,LED Type E,PRODUCT,LED Type E,Family code for LED Type E
+FAMILY,All,PRODUCT,All,Family code for All
+FAMILY,Cobra Head,PRODUCT,Cobra Head,Family code for Cobra Head
+FAMILY,Stad,PRODUCT,Stad,Family code for Stad
+FAMILY,Fulton,PRODUCT,Fulton,Family code for Fulton
+FAMILY,Flushing Meadows,PRODUCT,Flushing Meadows,Family code for Flushing Meadows
+FAMILY,World’s Fair,PRODUCT,World’s Fair,Family code for World’s Fair
+FAMILY,Round Top Head,PRODUCT,Round Top Head,Family code for Round Top Head
+FAMILY,All,PRODUCT,All,Family code for All
+FAMILY,Type M–2 Traffic Signal Pole,PRODUCT,Type M–2 Traffic Signal Pole,Family code for Type M–2 Traffic Signal Pole
+FAMILY,Alliance Traffic Signal Pole,PRODUCT,Alliance Traffic Signal Pole,Family code for Alliance Traffic Signal Pole
+FAMILY,All,PRODUCT,All,Family code for All
+FAMILY,Ventura,PRODUCT,Ventura,Family code for Ventura
+FAMILY,Northridge,PRODUCT,Northridge,Family code for Northridge
+FAMILY,Miramar,PRODUCT,Miramar,Family code for Miramar
+FAMILY,Tulare,PRODUCT,Tulare,Family code for Tulare
+FAMILY,Alameda,PRODUCT,Alameda,Family code for Alameda
+FAMILY,Alpine,PRODUCT,Alpine,Family code for Alpine
+FAMILY,Imperial,PRODUCT,Imperial,Family code for Imperial
+FAMILY,Sunset,PRODUCT,Sunset,Family code for Sunset
+FAMILY,Riverside,PRODUCT,Riverside,Family code for Riverside
+FAMILY,Buccaneer,PRODUCT,Buccaneer,Family code for Buccaneer
+FAMILY,Santa Cruz,PRODUCT,Santa Cruz,Family code for Santa Cruz
+FAMILY,Stinson,PRODUCT,Stinson,Family code for Stinson
+LINE,Rural,PRODUCT,Rural,Line code for Rural
+LINE,City,PRODUCT,City,Line code for City
+LINE,Special application,PRODUCT,Special application,Line code for Special application
+LINE,Traffic,PRODUCT,Traffic,Line code for Traffic
+CATEGORY,Bulbs,ITEM,Bulbs,Category code for Bulbs
+CATEGORY,Controllers,ITEM,Controllers,Category code for Controllers
+CATEGORY,Enclosures,ITEM,Enclosures,Category code for Enclosures
+CATEGORY,High Voltage Electrical,ITEM,High Voltage Electrical,Category code for High Voltage Electrical
+CATEGORY,Lenses,ITEM,Lenses,Category code for Lenses
+CATEGORY,Luminaire,ITEM,Luminaire,Category code for Luminaire
+CATEGORY,Mechanicals,ITEM,Mechanicals,Category code for Mechanicals
+CATEGORY,Primary Chassis,ITEM,Primary Chassis,Category code for Primary Chassis
+CATEGORY,Primary Foundation,ITEM,Primary Foundation,Category code for Primary Foundation
+CATEGORY,Secondary Chassis,ITEM,Secondary Chassis,Category code for Secondary Chassis

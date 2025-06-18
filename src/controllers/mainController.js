@@ -84,3 +84,7 @@ exports.getAddComputer = async (req, res) => { // affiche la page addcomputer
     res.render("pages/addcomputer.twig", { company: req.session.company })
 
 }
+
+exports.getAddCsv = async (req, res) => {
+    res.render("pages/addcsv.twig", { company: req.session.company })
+}

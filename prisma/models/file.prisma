@@ -1,0 +1,9 @@
+model File {
+    id         Int      @id @default(autoincrement())
+    filename   String
+    size       Int
+    path       String
+    uploadAt   DateTime @default(now())
+    company_id Int
+    company    Company  @relation(fields: [company_id], references: [id])
+}

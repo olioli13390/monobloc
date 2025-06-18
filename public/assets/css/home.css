@@ -68,30 +68,71 @@ main {
         padding: 10px;
 
         #btn-add-container {
-            display: flex;
-            gap: 40px;
+            width: 30%;
 
             .btn-add {
-                background-color: #53DD6C;
+                background-color: #80cbad;
+                transition: 0.2s ease;
                 padding: 10px;
+                margin: 10px 0;
                 border-radius: 5px;
+                width: 60%;
 
                 a {
                     height: 100%;
                     width: 100%;
+                    color: white;
                 }
+            }
+
+            .btn-add:hover {
+                background-color: #63A088;
+                transition: 0.2s ease;
             }
         }
     }
 
     #display-workers {
 
-        margin: 20px;
         text-align: left;
         border-bottom: 1px solid #56638aaf;
+        position: relative;
 
-        h3 {
-            margin-top: 0;
+        .display-workers-container {
+            padding: 10px;
+        }
+
+        #searchInput {
+            padding: 7px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        #searchInput:focus {
+            border: none;
+            outline: none;
+        }
+
+        #confirm-delete-modal {
+            display: none;
+            height: 200px;
+            width: 400px;
+            position: absolute;
+            background-color: white;
+            border-radius: 5px;
+            text-align: center;
+            top: 25%;
+            left: 25%;
+            z-index: 1001;
+
+            .confirm-delete-modal-container {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+            }
         }
 
         .header {
@@ -138,12 +179,9 @@ main {
     }
 
     #display-computers {
-        h3 {
-            margin-top: 0;
+        .display-computers-container {
+            padding: 10px;
         }
-
-        margin: 20px;
-
 
         .tab-container {
             table {

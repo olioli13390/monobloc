@@ -1,0 +1,26 @@
+{% extends "../layout/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/settings.css">
+{% endblock %}
+
+{% block title %}
+	<title>Ajouter un csv</title>
+{% endblock %}
+
+{% block main %}
+	<main>
+		<section id="add-file">
+			<form action="" method="post" enctype="multipart/form-data">
+				<div>
+					<label for="file">Fichier CSV :</label>
+					<input type="file" name="file" id="file" accept=".csv" required>
+				</div>
+
+				<button type="submit">Envoyer fichier CSV</button>
+			</form>
+		</section>
+	</main>
+
+
+{% endblock %}

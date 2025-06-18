@@ -1,11 +1,11 @@
 model Company {
   id        Int        @id @default(autoincrement())
   status    String
-  siret     String        @unique
+  siret     String     @unique
   password  String
   name      String?
-  createdAt   DateTime      @default(now())
+  createdAt DateTime   @default(now())
   workers   Worker[]
   computers Computer[]
-  
+  files     File[]
 }

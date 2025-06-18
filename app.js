@@ -4,6 +4,7 @@ const companyRoutes = require("./src/routes/companyRoutes")
 const mainRoutes = require("./src/routes/mainRoutes")
 const workerRoutes = require("./src/routes/workerRoutes")
 const computerRoutes = require("./src/routes/computerRoutes")
+const fileRoutes = require('./src/routes/fileRoutes')
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use(companyRoutes)
 app.use(mainRoutes)
 app.use(workerRoutes)
 app.use(computerRoutes)
+app.use(fileRoutes)
 
 app.listen(2999, () => {
     console.log("Ecoute le port 2999");

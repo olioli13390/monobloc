@@ -9,4 +9,6 @@ router.get('/addworker', authguard, mainController.getAddWorker)
 
 router.get('/addcomputer', authguard, mainController.getAddComputer)
 
+router.get('/addcsv', authguard, mainController.getAddCsv)
+
 module.exports = router
