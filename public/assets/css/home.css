@@ -1,6 +1,11 @@
+body {
+    height: 100vh;
+}
+
 main {
     display: flex;
-    height: 90%;
+    height: 100%;
+
 
     h3 {
         font-size: 1.5em;
@@ -8,15 +13,11 @@ main {
 }
 
 #table-views {
-    height: 100%;
+    border-right: 3px solid #56638aaf;
     width: 20%;
-
-
+    height: 100%;
 
     #tab-choice {
-        height: 100%;
-        border-right: 1px solid #56638aaf;
-
         .tab-choice-container {
             padding: 10px;
 
@@ -61,33 +62,100 @@ main {
 }
 
 #table-display {
-    height: 100%;
     width: 80%;
 
     #display-board {
         padding: 10px;
 
-        #btn-add-container {
-            width: 30%;
+        .board-container {
+            padding-bottom: 20px;
 
-            .btn-add {
-                background-color: #80cbad;
-                transition: 0.2s ease;
-                padding: 10px;
-                margin: 10px 0;
-                border-radius: 5px;
-                width: 60%;
+            #btn-add-container {
+                display: flex;
+                justify-content: space-around;
 
-                a {
-                    height: 100%;
-                    width: 100%;
-                    color: white;
+                .btn-add {
+                    background-color: #56638a11;
+                    transition: 0.2s ease;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border-radius: 5px;
+                }
+
+                .btn-add:hover {
+                    background-color: #63a0889f;
+                    color: black;
+                    transition: 0.2s ease;
                 }
             }
+        }
 
-            .btn-add:hover {
-                background-color: #63A088;
-                transition: 0.2s ease;
+        #company-info {
+            background-color: white;
+            box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
+            border-radius: 5px;
+
+            h4 {
+                margin: 10px 0;
+            }
+
+            .company-info-container {
+                padding: 10px;
+
+                h4 {
+                    font-size: 1.4em;
+                }
+            }
+        }
+
+        #recent-add {
+            h4 {
+                font-size: 1.4em;
+            }
+
+            display: flex;
+            gap: 2%;
+            margin-top: 10px;
+
+            .recent-add-workers {
+                background-color: white;
+                box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
+                border-radius: 5px;
+                width: 49%;
+            }
+
+            .recent-add-files {
+                background-color: white;
+                box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
+                border-radius: 5px;
+                width: 49%;
+            }
+
+            .recent-container {
+                padding: 10px;
+
+                ul {
+                    padding: 0;
+
+                    .file-info {
+                        margin: 5px 0;
+                    }
+
+                    li {
+                        p {
+                            margin: 0;
+                            font-weight: 100;
+                        }
+                    }
+
+                    .line {
+                        display: block;
+                        height: 1px;
+                        width: 100%;
+                        background-color: #EEEEEE;
+                        margin: 5px 0;
+                    }
+                }
             }
         }
     }
@@ -131,7 +199,6 @@ main {
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-
             }
         }
 
@@ -145,8 +212,10 @@ main {
 
         table {
             border-spacing: 0;
-            padding-bottom: 40px;
+            border-radius: 5px;
             width: 100%;
+            padding: 10px;
+            background-color: white;
 
             th {
                 width: 10%;
@@ -179,24 +248,24 @@ main {
     }
 
     #display-computers {
-        .display-computers-container {
+        back .display-computers-container {
             padding: 10px;
         }
 
         .tab-container {
             table {
-                width: 50%;
+                width: 100%;
                 text-align: left;
                 border-spacing: 0;
+
 
                 .header {
                     background: #56638aaf;
                 }
 
-                .header:hover {
-                    background: #56638aaf;
+                table {
+                    background-color: white;
                 }
-
 
                 tr {
                     border-bottom: 1px solid black;
@@ -213,14 +282,17 @@ main {
                 .btn-container {
                     padding: 10px 0;
                     display: flex;
-
-                    align-items: center;
+                    flex-direction: column;
+                    justify-content: left;
                     gap: 10px;
 
                     .btn-validate-update {
                         margin: 0;
                     }
                 }
+
+
+
             }
         }
     }

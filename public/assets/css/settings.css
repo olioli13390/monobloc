@@ -1,9 +1,8 @@
 body {
-    background: rgba(82, 82, 82, 0.043);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     color: rgba(0, 0, 0, 0.849);
-    height: 100vh;
+
 
     a {
         text-decoration: none;
@@ -36,7 +35,7 @@ body {
 header {
 
     height: 10%;
-    border-bottom: 1px solid #56638aaf;
+    border-bottom: 3px solid #56638aaf;
 
     nav {
         height: 100%;
@@ -79,7 +78,7 @@ header {
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1px;
             background-color: #8a5a56;
             transition: width 0.3s ease;
         }
@@ -92,7 +91,62 @@ header {
         #logout:hover::after {
             width: 100%;
         }
+
+        #login {
+            position: relative;
+            text-decoration: none;
+        }
+
+        #login::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #8a5a56;
+            transition: width 0.3s ease;
+        }
+
+        #login:hover {
+            color: #8a5a56;
+            transition: color 0.2s;
+        }
+
+        #login:hover::after {
+            width: 100%;
+        }
+
+        #register {
+            position: relative;
+            text-decoration: none;
+        }
+
+        #register::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #8a5a56;
+            transition: width 0.3s ease;
+        }
+
+        #register:hover {
+            color: #8a5a56;
+            transition: color 0.2s;
+        }
+
+        #register:hover::after {
+            width: 100%;
+        }
     }
+}
+
+html {
+    background: url('../../assets/img/bg-main.jpg') center/cover;
+    background-attachment: fixed;
 }
 
 .btn-validate-update {

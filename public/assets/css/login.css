@@ -1,6 +1,16 @@
-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-}
+ body {
+     height: 95vh;
+ }
+
+ section {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 50vh;
+
+
+ }
+
+ main {
+     height: 100%;
+ }

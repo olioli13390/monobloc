@@ -36,52 +36,73 @@
 		<div id="table-display">
 
 			<section id="display-board">
-				<div id="add-btn-container">
+				<div id="display-board-container">
 					<h3>Tableau de bord</h3>
 					<div class="board-container">
 						<div id="btn-add-container">
-							<div class="btn-add">
-								<a href="/addworker">Ajouter un travailleur</a>
+							<div class="worker-container">
+								<a href="/addworker">
+									<div class="btn-add">Ajouter un travailleur</div>
+								</a>
+								<a href="/addcsv">
+									<div class="btn-add">Ajouter un fichier CSV</div>
+								</a>
 							</div>
-							<div class="btn-add">
-								<a href="/addcomputer">Ajouter un ordinateur</a>
-							</div>
-							<div class="btn-add">
-								<a href="/addcsv">Ajouter un fichier CSV</a>
-							</div>
+							<a href="/addcomputer">
+								<div class="btn-add">Ajouter un ordinateur</div>
+							</a>
+
 						</div>
 					</div>
 					<div id="company-info">
-						<h4>Vos informations</h4>
-						<div class="info-container">
-							<p>{{company.status}}</p>
-							<p>{{company.name}}</p>
-							<p>{{company.formattedCreateAt}}</p>
+						<div class="company-info-container">
+							<h4>Vos informations</h4>
+							<div class="info-container">
+								<p>{{company.status}}</p>
+								<p>{{company.name}}</p>
+								<p>{{company.formattedCreateAt}}</p>
+							</div>
 						</div>
 					</div>
 
-					<div class="recent-add-workers">
-						<h4>Vos ajouts récents d'employés</h4>
+					<div id="recent-add">
 
-						<table>
-							<thead>
-								<tr>
-									<th>Nom</th>
-									<th>Prénom</th>
-									<th>Salarié depuis</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for worker in recentWorkers %}
-									<tr>
-										<td>{{worker.firstName}}</td>
-										<td>{{worker.lastName}}</td>
-										<td>{{worker.formattedWorkerCreateAt}}</td>
-									</tr>
+						<div class="recent-add-workers">
+							<div class="recent-container">
+								<h4>Vos ajouts récents de salariés</h4>
+								<ul>
+									{% for worker in recentWorkers %}
+										<div class="worker-info">
+											<li>{{worker.firstName}}
+												{{worker.lastName}}</li>
+											<li>
+												<p class="updload-date">{{worker.formattedWorkerCreateAt}}</p>
+											</li>
+											<span class="line"></span>
+										</div>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+						<div class="recent-add-files">
+							<div class="recent-container">
+								<h4>Vos ajouts récents de fichiers</h4>
 
-								{% endfor %}
-							</tbody>
-						</table>
+								<ul>
+									{% for file in files %}
+										<div class="file-info">
+											<li>{{file.filename}}</li>
+											<li>
+												<p class="updload-date">Ajouté le
+													{{file.formattedUploadAt}}</p>
+											</li>
+											<span class="line"></span>
+										</div>
+									{% endfor %}
+								</ul>
+
+							</div>
+						</div>
 					</div>
 
 

@@ -111,28 +111,21 @@ exports.updateWorker = async (req, res) => { // update worker
             return res.render("pages/addworker.twig", {
                 error: {
                     firstName: "Prénom invalide"
-                }, worker: { ...req.body, id: req.params.id }
+                }, worker: { ...req.body, id: req.params.id, password }
             })
         }
         if (!req.body.lastName.match(/^[A-ZÀ-ÿ][a-zà-ÿ]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     lastName: "Nom invalide"
-                }, worker: { ...req.body, id: req.params.id }
+                }, worker: { ...req.body, id: req.params.id, password }
             })
         }
         if (!req.body.mail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     mail: "Email invalide"
-                }, worker: { ...req.body, id: req.params.id }
-            })
-        }
-        if (!req.body.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-            return res.render("pages/addworker.twig", {
-                error: {
-                    password: "Mot de passe invalide"
-                }, worker: { ...req.body, id: req.params.id }
+                }, worker: { ...req.body, id: req.params.id, password }
             })
         }
         if (!req.body.age.match(/^\d+$/)) {

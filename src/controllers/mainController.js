@@ -54,11 +54,29 @@ exports.getHome = async (req, res) => { // affiche dashboard + load workers
             return {
                 ...worker,
                 formattedWorkerCreateAt: formattedWorkerCreateAt
-            };
-        });
+            }
+        })
 
+        const files = await prisma.file.findMany({
+            where: {
+                company_id: company.id
+            },
+            orderBy: {
+                uploadAt: 'desc'
+            },
+            take: 3
+        })
 
-        res.render('pages/home.twig', { company: company, workers: company.workers, computers: company.computers, recentWorkers: formattedRecentWorkers })
+        const formattedFiles = files.map(file => ({
+            ...file,
+            formattedUploadAt: file.uploadAt.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            })
+        }))
+
+        res.render('pages/home.twig', { company: company, workers: company.workers, computers: company.computers, recentWorkers: formattedRecentWorkers, files: formattedFiles })
     } catch (error) {
         console.log(error);
     }

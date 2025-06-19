@@ -23,7 +23,7 @@ exports.postComputer = async (req, res) => { // créer un pc
         })
         res.redirect('/')
     } catch (error) {
-        console.log(error);
+
         res.render('pages/addcomputer.twig', {
             error: { adress: "Adresse mac invalide" },
             company: req.session.company
@@ -65,7 +65,7 @@ exports.postUpdateComputer = async (req, res) => { // post update computer
                 id: parseInt(req.params.id)
             }
         })
-        if (!req.body.adress.match(/^([0-9A-Fa-f]{2}[:-]){4}([0-9A-Fa-f]{2})$/
+        if (!req.body.adress.match(/^([0-9A-Za-z]{2}[:-]){4}([0-9A-Za-z]{2})$/
         )) {
             return res.render("pages/addcomputer.twig", {
                 error: {
