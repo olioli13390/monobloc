@@ -9,7 +9,7 @@ main {
 
 
 #table-views {
-    border-right: 3px solid #56638aaf;
+    border-right: 2px solid #56638aaf;
     width: 20%;
     height: 100%;
     position: fixed;
@@ -50,9 +50,12 @@ main {
                 }
 
                 li:hover {
+                    cursor: pointer;
+                }
+
+                li:not(.focusing):hover {
                     background-color: #56638a11;
                     color: black;
-                    cursor: pointer;
                     transition: 0.2s;
                 }
             }
@@ -63,13 +66,11 @@ main {
             margin-left: 10px;
 
             a {
-                font-size: 0.8em;
+                font-size: 0.9em;
                 color: #8a5a56;
             }
 
-            a:hover {
-                
-            }
+            a:hover {}
 
         }
     }
@@ -83,8 +84,6 @@ main {
         padding: 10px;
 
         #company-info {
-            background-color: white;
-            box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
             border-radius: 5px;
 
             h4 {
@@ -119,6 +118,11 @@ main {
             }
         }
 
+        h4 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
         #recent-add {
             display: flex;
             gap: 2%;
@@ -137,6 +141,13 @@ main {
             }
 
             .recent-add-files {
+                background-color: white;
+                box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
+                border-radius: 5px;
+                width: 49%;
+            }
+
+            .recent-add-computers {
                 background-color: white;
                 box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
                 border-radius: 5px;
@@ -299,6 +310,28 @@ main {
 
     height: 100%;
 
+    h3 {
+        padding: 10px;
+        margin-bottom: 0;
+    }
+
+    .computers-add-container {
+        padding: 10px;
+
+        a {
+            padding: 2px;
+
+            .btn-add {
+                text-decoration: none;
+            }
+
+            .btn-add:hover {
+                color: #63A088;
+                transition: color 0.2s;
+            }
+        }
+    }
+
     .display-computers-container {
         padding: 10px;
 
@@ -309,6 +342,7 @@ main {
             width: 100%;
             text-align: left;
             border-spacing: 0;
+
 
 
             .header {

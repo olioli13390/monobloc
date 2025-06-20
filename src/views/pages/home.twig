@@ -29,7 +29,6 @@
 								<li id="computer-list">
 									<p>Ordinateurs</p>
 								</li>
-
 							</ul>
 						</div>
 					</div>
@@ -68,169 +67,199 @@
 						</div>
 					</div>
 
+					{% if worker or computer or file %}
+						<h4>Ajouté récemment</h4>
+					{% endif %}
+
+
 					<div id="recent-add">
-						<div class="recent-add-workers">
-							<div class="recent-container">
-								<h4>Vos ajouts récents de salariés</h4>
-								<ul>
-									{% for worker in recentWorkers %}
-										<div class="worker-info">
-											<li>{{worker.firstName}}
-												{{worker.lastName}}</li>
-											<li>
-												<p class="updload-date">{{worker.formattedWorkerCreateAt}}</p>
-											</li>
-											<span class="line"></span>
-										</div>
-									{% endfor %}
-								</ul>
-							</div>
-						</div>
-						<div class="recent-add-files">
-							<div class="recent-container">
-								<h4>Vos ajouts récents de fichiers</h4>
-
-								<ul>
-									{% for file in files %}
-										<div class="file-info">
-											<li>{{file.filename}}</li>
-											<li>
-												<p class="updload-date">Ajouté le
-													{{file.formattedUploadAt}}</p>
-											</li>
-											<span class="line"></span>
-										</div>
-									{% endfor %}
-								</ul>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="display-workers" class="hidden">
-				<div class="display-workers-container">
-					<div id="confirm-delete-modal">
-						<div class="confirm-delete-modal-container">
-							<p>Etes-vous sûr de vouloir supprimer ?</p>
-							<div>
-								<button id="confirm-delete">Supprimer</button>
-								<button id="cancel">Annuler</button>
-							</div>
-						</div>
-					</div>
-
-
-					<h3>Liste des salariés</h3>
-					<div class="workers-utils">
-						<div class="worker-add-container">
-							<a href="/addworker">
-								<div class="btn-add">Ajouter un travailleur</div>
-							</a>
-							<a href="/addcsv">
-								<div class="btn-add">Ajouter un fichier CSV</div>
-							</a>
-						</div>
-						<div class="search-container">
-							<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
-						</div>
-					</div>
-
-					<div class="tab-container">
-						<table>
-							<thead>
-								<tr class='header'>
-									<th>Nom</th>
-									<th>Prénom</th>
-									<th>Genre</th>
-									<th>Âge</th>
-									<th>Email</th>
-									<th>Ordinateur</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody id="workers-table-body">
-								{% for worker in workers %}
-
-									<tr>
-										<td>{{worker.lastName}}</td>
-										<td>{{worker.firstName}}</td>
-										<td>{{worker.gender}}</td>
-										<td>{{worker.age}}</td>
-										<td>{{worker.mail}}</td>
-										<td>{{worker.computer.adress}}</td>
-										<td>
-											<div class="btn-container">
-												<div>
-													<button class="btn-delete" onclick="showDeleteModal(event, '{{worker.id}}')">Supprimer</button>
-													<form id="deleteForm{{worker.id}}" action="/delete/{{worker.id}}" method="post"></form>
-												</div>
-												<div class="btn-update">
-													<form action="/update/{{worker.id}}" method="get">
-														<button class="btn-validate-update">Modifier</button>
-													</form>
-												</div>
+						{% if worker %}
+							<div class="recent-add-workers">
+								<div class="recent-container">
+									<h4>Salariés</h4>
+									<ul>
+										{% for worker in recentWorkers %}
+											<div class="worker-info">
+												<li>{{worker.firstName}}
+													{{worker.lastName}}</li>
+												<li>
+													<p class="updload-date">{{worker.formattedWorkerCreateAt}}</p>
+												</li>
+												<span class="line"></span>
 											</div>
-										</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</section>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						{% endif %}
 
-			<section id="display-computers" class="hidden">
-				<div class="display-computers-container">
-					<h3>Liste des ordinateurs</h3>
-					<a href="/addcomputer">
-						<div class="btn-add">Ajouter un ordinateur</div>
-					</a>
-					<div class="tab-container">
-						<table>
-							<thead>
-								<tr class="header">
-									<th>Ordinateurs</th>
-									<th>Utilisateurs</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for computer in computers %}
-									<tr>
-										<td>{{computer.adress}}</td>
-										{% if computer.worker %}
-											<td>{{computer.worker.firstName}}</td>
-										{% else %}
-											<td>-</td>
-										{% endif %}
-										<td>
-											<div class="btn-container">
-												<div>
-													<form action="/delete/computer/{{computer.id}}" method="post">
-														<button class="btn-delete">Supprimer</button>
-													</form>
-												</div>
-												<div>
-													<form action="/update/computer/{{computer.id}}" method="get">
-														<button class="btn-validate-update">Modifier</button>
-													</form>
-												</div>
+						{% if computer %}
+							<div class="recent-add-computers">
+								<div class="recent-container">
+									<h4>Ordinateurs</h4>
+									<ul>
+										{% for computer in computers %}
+											<div class="file-info">
+												<li>{{computer.adress}}</li>
+												<li>
+													<p class="updload-date">Ajouté le
+														{{computer.formattedUploadAt}}</p>
+												</li>
+												<span class="line"></span>
 											</div>
-										</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						{% endif %}
+
+						{% if file %}
+							<div class="recent-add-files">
+								<div class="recent-container">
+									<h4>Fichiers</h4>
+									<ul>
+										{% for file in files %}
+											<div class="file-info">
+												<li>{{file.filename}}</li>
+												<li>
+													<p class="updload-date">Ajouté le
+														{{file.formattedUploadAt}}</p>
+												</li>
+												<span class="line"></span>
+											</div>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						{% endif %}
 					</div>
-				</div>
-			</section>
-		</div>
-	</main>
-{% endblock %}
-{% block script %}
-	<script src="/assets/js/modal.js"></script>
-	<script src="/assets/js/searchWorker.js"></script>
-	<script src="/assets/js/confirmDeleteWorker.js"></script>
-{% endblock %}
+				</section>
+
+				<section id="display-workers" class="hidden">
+					<div class="display-workers-container">
+						<div id="confirm-delete-modal">
+							<div class="confirm-delete-modal-container">
+								<p>Etes-vous sûr de vouloir supprimer ?</p>
+								<div>
+									<button id="confirm-delete">Supprimer</button>
+									<button id="cancel">Annuler</button>
+								</div>
+							</div>
+						</div>
+
+
+						<h3>Liste des salariés</h3>
+						<div class="workers-utils">
+							<div class="worker-add-container">
+								<a href="/addworker">
+									<div class="btn-add">Ajouter un travailleur</div>
+								</a>
+								<a href="/addcsv">
+									<div class="btn-add">Ajouter un fichier CSV</div>
+								</a>
+							</div>
+							<div class="search-container">
+								<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
+							</div>
+						</div>
+
+						<div class="tab-container">
+							<table>
+								<thead>
+									<tr class='header'>
+										<th>Nom</th>
+										<th>Prénom</th>
+										<th>Genre</th>
+										<th>Âge</th>
+										<th>Email</th>
+										<th>Ordinateur</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody id="workers-table-body">
+									{% for worker in workers %}
+
+										<tr>
+											<td>{{worker.lastName}}</td>
+											<td>{{worker.firstName}}</td>
+											<td>{{worker.gender}}</td>
+											<td>{{worker.age}}</td>
+											<td>{{worker.mail}}</td>
+											<td>{{worker.computer.adress}}</td>
+											<td>
+												<div class="btn-container">
+													<div>
+														<button class="btn-delete" onclick="showDeleteModal(event, '{{worker.id}}')">Supprimer</button>
+														<form id="deleteForm{{worker.id}}" action="/delete/{{worker.id}}" method="post"></form>
+													</div>
+													<div class="btn-update">
+														<form action="/update/{{worker.id}}" method="get">
+															<button class="btn-validate-update">Modifier</button>
+														</form>
+													</div>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+
+				<section id="display-computers" class="hidden">
+					<div class="display-computers-container">
+						<h3>Liste des ordinateurs</h3>
+						<div class="computers-add-container">
+							<a href="/addcomputer">
+								<div class="btn-add">Ajouter un ordinateur</div>
+							</a>
+						</div>
+
+						<div class="tab-container">
+							<table>
+								<thead>
+									<tr class="header">
+										<th>Ordinateurs</th>
+										<th>Utilisateurs</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for computer in computers %}
+										<tr>
+											<td>{{computer.adress}}</td>
+											{% if computer.worker %}
+												<td>{{computer.worker.firstName}}</td>
+											{% else %}
+												<td>-</td>
+											{% endif %}
+											<td>
+												<div class="btn-container">
+													<div>
+														<form action="/delete/computer/{{computer.id}}" method="post">
+															<button class="btn-delete">Supprimer</button>
+														</form>
+													</div>
+													<div>
+														<form action="/update/computer/{{computer.id}}" method="get">
+															<button class="btn-validate-update">Modifier</button>
+														</form>
+													</div>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+	{% endblock %}
+	{% block script %}
+		<script src="/assets/js/modal.js"></script>
+		<script src="/assets/js/searchWorker.js"></script>
+		<script src="/assets/js/confirmDeleteWorker.js"></script>
+	{% endblock %}
