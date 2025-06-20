@@ -38,22 +38,6 @@
 			<section id="display-board">
 				<div id="display-board-container">
 					<h3>Tableau de bord</h3>
-					<div class="board-container">
-						<div id="btn-add-container">
-							<div class="worker-container">
-								<a href="/addworker">
-									<div class="btn-add">Ajouter un travailleur</div>
-								</a>
-								<a href="/addcsv">
-									<div class="btn-add">Ajouter un fichier CSV</div>
-								</a>
-							</div>
-							<a href="/addcomputer">
-								<div class="btn-add">Ajouter un ordinateur</div>
-							</a>
-
-						</div>
-					</div>
 					<div id="company-info">
 						<div class="company-info-container">
 							<h4>Vos informations</h4>
@@ -66,7 +50,6 @@
 					</div>
 
 					<div id="recent-add">
-
 						<div class="recent-add-workers">
 							<div class="recent-container">
 								<h4>Vos ajouts récents de salariés</h4>
@@ -104,13 +87,10 @@
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</section>
 
 			<section id="display-workers" class="hidden">
-
 				<div class="display-workers-container">
 					<div id="confirm-delete-modal">
 						<div class="confirm-delete-modal-container">
@@ -124,10 +104,20 @@
 
 
 					<h3>Liste des salariés</h3>
-					<div class="search-container">
-						<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
-
+					<div class="workers-utils">
+						<div class="search-container">
+							<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
+						</div>
+						<div class="worker-add-container">
+							<a href="/addworker">
+								<div class="btn-add">Ajouter un travailleur</div>
+							</a>
+							<a href="/addcsv">
+								<div class="btn-add">Ajouter un fichier CSV</div>
+							</a>
+						</div>
 					</div>
+
 					<div class="tab-container">
 						<table>
 							<thead>
@@ -175,6 +165,9 @@
 			<section id="display-computers" class="hidden">
 				<div class="display-computers-container">
 					<h3>Liste des ordinateurs</h3>
+					<a href="/addcomputer">
+						<div class="btn-add">Ajouter un ordinateur</div>
+					</a>
 					<div class="tab-container">
 						<table>
 							<thead>
@@ -217,10 +210,51 @@
 		</div>
 
 
-	</main>
-{% endblock %}
-{% block script %}
-	<script src="/assets/js/modal.js"></script>
-	<script src="/assets/js/searchWorker.js"></script>
-	<script src="/assets/js/confirmDeleteWorker.js"></script>
-{% endblock %}
+		<section id="display-computers" class="hidden">
+			<div class="display-computers-container">
+				<h3>Liste des ordinateurs</h3>
+				<div class="tab-container">
+					<table>
+						<thead>
+							<tr class="header">
+								<th>Ordinateurs</th>
+								<th>Utilisateurs</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for computer in computers %}
+								<tr>
+									<td>{{computer.adress}}</td>
+									{% if computer.worker %}
+										<td>{{computer.worker.firstName}}</td>
+									{% else %}
+										<td>-</td>
+									{% endif %}
+									<td>
+										<div class="btn-container">
+											<div>
+												<form action="/delete/computer/{{computer.id}}" method="post">
+													<button class="btn-delete">Supprimer</button>
+												</form>
+											</div>
+											<div>
+												<form action="/update/computer/{{computer.id}}" method="get">
+													<button class="btn-validate-update">Modifier</button>
+												</form>
+											</div>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</main>{% endblock %}{% block script %}
+<script src="/assets/js/modal.js"></script>
+<script src="/assets/js/searchWorker.js"></script>
+<script src="/assets/js/confirmDeleteWorker.js"></script>{% endblock %}
