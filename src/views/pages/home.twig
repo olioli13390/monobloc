@@ -13,36 +13,52 @@
 		<div id="table-views">
 			<section id="tab-choice">
 				<div class="tab-choice-container">
-					<div id="title">
-						<h3>Navigation</h3>
+					<div class="nav">
+
+						<div id="title">
+							<h3>GestInfoPro</h3>
+						</div>
+						<div id="tab-choice-list">
+							<ul>
+								<li id="board" class="focusing">
+									<p>Tableau de board</p>
+								</li>
+								<li id="worker-list">
+									<p>Salariés</p>
+								</li>
+								<li id="computer-list">
+									<p>Ordinateurs</p>
+								</li>
+
+							</ul>
+						</div>
 					</div>
-					<div id="tab-choice-list">
-						<ul>
-							<li id="board" class="focusing">
-								<p>Tableau de board</p>
-							</li>
-							<li id="worker-list">
-								<p>Salariés</p>
-							</li>
-							<li id="computer-list">
-								<p>Ordinateurs</p>
-							</li>
-						</ul>
+					<div class="log">
+						{% if company %}
+							<a id="logout" href="/logout">Déconnexion</a>
+						{% else %}
+							<a id="login" href="/login">Se connecter</a>
+						{% endif %}
 					</div>
 				</div>
 			</section>
 		</div>
 
 		<div id="table-display">
+
 			<section id="display-board">
 				<div id="display-board-container">
+					<span class="separate"></span>
 					<div id="company-info">
 						<div class="company-info-container">
 							<h4>Vos informations</h4>
 							<div class="info-container">
-								<p>{{company.status}}</p>
-								<p>{{company.name}}</p>
-								<p>{{company.formattedCreateAt}}</p>
+								<p>Bonjour,
+									{{company.status}}</p>
+								<p>Propriétaire :
+									{{company.name}}</p>
+								<p>Date de création :
+									{{company.formattedCreateAt}}</p>
 							</div>
 						</div>
 						<div class="update-company">
@@ -108,9 +124,6 @@
 
 					<h3>Liste des salariés</h3>
 					<div class="workers-utils">
-						<div class="search-container">
-							<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
-						</div>
 						<div class="worker-add-container">
 							<a href="/addworker">
 								<div class="btn-add">Ajouter un travailleur</div>
@@ -118,6 +131,9 @@
 							<a href="/addcsv">
 								<div class="btn-add">Ajouter un fichier CSV</div>
 							</a>
+						</div>
+						<div class="search-container">
+							<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
 						</div>
 					</div>
 
@@ -211,53 +227,10 @@
 				</div>
 			</section>
 		</div>
-
-
-		<section id="display-computers" class="hidden">
-			<div class="display-computers-container">
-				<h3>Liste des ordinateurs</h3>
-				<div class="tab-container">
-					<table>
-						<thead>
-							<tr class="header">
-								<th>Ordinateurs</th>
-								<th>Utilisateurs</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for computer in computers %}
-								<tr>
-									<td>{{computer.adress}}</td>
-									{% if computer.worker %}
-										<td>{{computer.worker.firstName}}</td>
-									{% else %}
-										<td>-</td>
-									{% endif %}
-									<td>
-										<div class="btn-container">
-											<div>
-												<form action="/delete/computer/{{computer.id}}" method="post">
-													<button class="btn-delete">Supprimer</button>
-												</form>
-											</div>
-											<div>
-												<form action="/update/computer/{{computer.id}}" method="get">
-													<button class="btn-validate-update">Modifier</button>
-												</form>
-											</div>
-										</div>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</section>
-	</div>
-
-</main>{% endblock %}{% block script %}
-<script src="/assets/js/modal.js"></script>
-<script src="/assets/js/searchWorker.js"></script>
-<script src="/assets/js/confirmDeleteWorker.js"></script>{% endblock %}
+	</main>
+{% endblock %}
+{% block script %}
+	<script src="/assets/js/modal.js"></script>
+	<script src="/assets/js/searchWorker.js"></script>
+	<script src="/assets/js/confirmDeleteWorker.js"></script>
+{% endblock %}

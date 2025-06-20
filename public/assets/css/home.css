@@ -1,24 +1,24 @@
-body {
-    height: 100vh;
-}
-
 main {
     display: flex;
-    height: 100%;
 
     h3 {
         font-size: 1.5em;
     }
 }
 
-#table-views {
 
+
+#table-views {
+    border-right: 3px solid #56638aaf;
     width: 20%;
     height: 100%;
     position: fixed;
 
     #tab-choice {
+        height: 100%;
+
         .tab-choice-container {
+            height: 100%;
             padding: 10px;
 
 
@@ -58,12 +58,24 @@ main {
             }
 
         }
-    }
 
+        .log {
+            margin-left: 10px;
+
+            a {
+                font-size: 0.8em;
+                color: #8a5a56;
+            }
+
+            a:hover {
+                
+            }
+
+        }
+    }
 }
 
 #table-display {
-    border-left: 3px solid #56638aaf;
     width: 80%;
     margin-left: 20%;
 
@@ -161,18 +173,22 @@ main {
     }
 
     #display-workers {
-
         text-align: left;
         position: relative;
 
+        h3 {
+            margin-bottom: 0;
+            padding: 10px;
+        }
+
         .display-workers-container {
             padding: 10px;
-            border-left: 3px solid #56638aaf;
+
 
             .workers-utils {
-                display: flex;
-                align-items: center;
                 padding: 10px;
+                display: flex;
+                flex-direction: column;
 
                 justify-content: space-between;
 
@@ -181,7 +197,7 @@ main {
                         padding: 2px;
 
                         .btn-add {
-                            position: relative;
+
                             text-decoration: none;
                         }
 
@@ -272,8 +288,15 @@ main {
 
 }
 
+.separate {
+    height: 100%;
+    width: 2px;
+    background-color: #8a5a56;
+    margin-left: 20%;
+}
+
 #display-computers {
-    border-left: 3px solid #56638aaf;
+
     height: 100%;
 
     .display-computers-container {

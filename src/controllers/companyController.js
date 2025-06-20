@@ -13,21 +13,38 @@ exports.getRegister = async (req, res) => { /// Affiche le register
 exports.postRegister = async (req, res) => { /// Créer une entreprise
     try {
         if (!req.body.status.match(/^.+$/)) {
-            throw { status: "Statut invalide" }
+
+            return res.render('pages/register.twig', {
+                error: {
+                    status: "Raison sociale incorrecte"
+                }
+            })
         }
         if (!req.body.siret.match(/^\d{14}$/)) {
-            throw { siret: "SIRET invalide" }
+            return res.render('pages/register.twig', {
+                error: {
+                    siret: "Siret incorrect, doit contenir 14 caractères"
+                }
+            })
         }
         if (!req.body.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-            throw { password: "Mot de passe invalide" }
+            return res.render('pages/register.twig', {
+                error: {
+                    password: "Mot de passe incorrect"
+                }
+            })
         }
         if (req.body.name) {
             if (!req.body.name.match(/^[a-zA-Z0-9\s\-']+$/)) {
-                throw { name: "Nom invalide" }
+                return res.render('pages/register.twig', {
+                    error: {
+                        name: "Nom incorrect"
+                    }
+                })
             }
         }
-    const hashedPassword = await bcrypt.hash(password, 10)
-        
+        const hashedPassword = await bcrypt.hash(password, 10)
+
         if (req.body.password == req.body.confirmPassword) {
             const company = await prisma.company.create({
                 data: {
@@ -90,8 +107,8 @@ exports.getUpdateCompany = async (req, res) => { /// attrape la modification de 
         const company = await prisma.company.findUnique({
             where: {
                 id: parseInt(req.params.id)
-            } 
-        })  
+            }
+        })
         res.render('pages/register.twig', { company, company: req.session.company })
     } catch (error) {
         console.log(error);
@@ -99,13 +116,13 @@ exports.getUpdateCompany = async (req, res) => { /// attrape la modification de 
 }
 
 
-exports.postUpdateCompany = async (req,res) => { /// poste la modification
-    
-    const {status, siret, password, name} = req.body
-    
+exports.postUpdateCompany = async (req, res) => { /// poste la modification
+
+    const { status, siret, password, name } = req.body
+
     try {
-        
-         if (!req.body.status.match(/^.+$/)) {
+
+        if (!req.body.status.match(/^.+$/)) {
             throw { status: "Statut invalide" }
         }
         if (!req.body.siret.match(/^\d{14}$/)) {
@@ -124,8 +141,8 @@ exports.postUpdateCompany = async (req,res) => { /// poste la modification
 
         if (req.body.password == req.body.confirmPassword) {
             const company = await prisma.company.update({
-                where:{
-                    id : parseInt(req.params.id)
+                where: {
+                    id: parseInt(req.params.id)
                 },
                 data: {
                     status: req.body.status,
@@ -144,7 +161,7 @@ exports.postUpdateCompany = async (req,res) => { /// poste la modification
                 id: parseInt(req.params.id)
             }
         })
-        
+
     }
 }
 

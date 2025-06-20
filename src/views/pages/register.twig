@@ -20,6 +20,17 @@
 					<h4>Créer un compte</h4>
 				{% endif %}
 				<form action="" method="post">
+					<div class="error">
+						{% if error.status %}
+							<p>{{error.status}}</p>
+						{% elseif error.siret %}
+							<p>{{error.siret}}</p>
+						{% elseif error.password %}
+							<p>{{error.password}}</p>
+						{% elseif error.name %}
+							<p>{{error.name}}</p>
+						{% endif %}
+					</div>
 					<div class="input-label-containers">
 						<label for="status">Raison sociale *</label>
 						<input type="text" name="status" id="status" value="{{company.status}}">
@@ -46,6 +57,11 @@
 					<p class="form-instructions">* Champs obligatoires</p>
 				</form>
 			</div>
+			{% if company %}
+				<div class="btn-back">
+					<a href="/">Retour</a>
+				</div>
+			{% endif %}
 		</section>
 	</main>
 {% endblock %}

@@ -8,7 +8,11 @@
 
 		<body>
 			<div class="overlay" id="overlay"></div>
-			{% include "../partials/header.twig" %}
+			{% if company is not defined or company is empty %}
+				{% include "../partials/header.twig" %}
+
+			{% endif %}
+
 
 			{% block main %}{% endblock %}
 			{% block script %}{% endblock %}
