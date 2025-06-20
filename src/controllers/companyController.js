@@ -26,12 +26,14 @@ exports.postRegister = async (req, res) => { /// Créer une entreprise
                 throw { name: "Nom invalide" }
             }
         }
+    const hashedPassword = await bcrypt.hash(password, 10)
+        
         if (req.body.password == req.body.confirmPassword) {
             const company = await prisma.company.create({
                 data: {
                     status: req.body.status,
                     siret: req.body.siret,
-                    password: req.body.password,
+                    password: hashedPassword,
                     name: req.body.name,
                 }
             })
@@ -81,3 +83,69 @@ exports.getLogout = async (req, res) => { /// déco
     req.session.destroy()
     res.redirect("/login")
 }
+
+
+exports.getUpdateCompany = async (req, res) => { /// attrape la modification de la company
+    try {
+        const company = await prisma.company.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            } 
+        })  
+        res.render('pages/register.twig', { company, company: req.session.company })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+exports.postUpdateCompany = async (req,res) => { /// poste la modification
+    
+    const {status, siret, password, name} = req.body
+    
+    try {
+        
+         if (!req.body.status.match(/^.+$/)) {
+            throw { status: "Statut invalide" }
+        }
+        if (!req.body.siret.match(/^\d{14}$/)) {
+            throw { siret: "SIRET invalide" }
+        }
+        if (!req.body.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+            throw { password: "Mot de passe invalide" }
+        }
+        if (req.body.name) {
+            if (!req.body.name.match(/^[a-zA-Z0-9\s\-']+$/)) {
+                throw { name: "Nom invalide" }
+            }
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        if (req.body.password == req.body.confirmPassword) {
+            const company = await prisma.company.update({
+                where:{
+                    id : parseInt(req.params.id)
+                },
+                data: {
+                    status: req.body.status,
+                    siret: req.body.siret,
+                    password: hashedPassword,
+                    name: req.body.name,
+                }
+            })
+            res.redirect("/")
+        } else throw ({ confirmPassword: "Vérification de mot de passe incorrecte" })
+
+    } catch (error) {
+        console.log(error);
+        const computer = await prisma.company.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+        
+    }
+}
+
+

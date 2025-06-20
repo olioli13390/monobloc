@@ -6,20 +6,21 @@ main {
     display: flex;
     height: 100%;
 
-
     h3 {
         font-size: 1.5em;
     }
 }
 
 #table-views {
-    border-right: 3px solid #56638aaf;
+
     width: 20%;
     height: 100%;
+    position: fixed;
 
     #tab-choice {
         .tab-choice-container {
             padding: 10px;
+
 
             #title {
                 font-weight: bold;
@@ -58,10 +59,13 @@ main {
 
         }
     }
+
 }
 
 #table-display {
+    border-left: 3px solid #56638aaf;
     width: 80%;
+    margin-left: 20%;
 
     #display-board {
         padding: 10px;
@@ -82,16 +86,36 @@ main {
                     font-size: 1.4em;
                 }
             }
+
+            .update-company {
+                display: flex;
+
+                .btn-validate-update {
+                    margin-top: 0;
+                    background: #8a5a5679;
+                    color: white;
+                }
+
+                .btn-validate-update:hover {
+                    background-color: #8a5a56;
+                    color: white;
+                }
+
+                form {
+                    padding: 10px;
+                }
+            }
         }
 
         #recent-add {
+            display: flex;
+            gap: 2%;
+            margin-top: 10px;
+
             h4 {
                 font-size: 1.4em;
             }
 
-            display: flex;
-            gap: 2%;
-            margin-top: 10px;
 
             .recent-add-workers {
                 background-color: white;
@@ -143,6 +167,7 @@ main {
 
         .display-workers-container {
             padding: 10px;
+            border-left: 3px solid #56638aaf;
 
             .workers-utils {
                 display: flex;
@@ -176,7 +201,8 @@ main {
     }
 
     #searchInput:focus {
-        border: none;
+        border: 2px solid #63A088;
+        border-radius: 5px;
         outline: none;
     }
 
@@ -247,8 +273,12 @@ main {
 }
 
 #display-computers {
+    border-left: 3px solid #56638aaf;
+    height: 100%;
+
     .display-computers-container {
         padding: 10px;
+
     }
 
     .tab-container {
@@ -289,10 +319,6 @@ main {
                     margin: 0;
                 }
             }
-
-
-
         }
     }
-}
 }

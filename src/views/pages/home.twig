@@ -34,10 +34,8 @@
 		</div>
 
 		<div id="table-display">
-
 			<section id="display-board">
 				<div id="display-board-container">
-					<h3>Tableau de bord</h3>
 					<div id="company-info">
 						<div class="company-info-container">
 							<h4>Vos informations</h4>
@@ -46,6 +44,11 @@
 								<p>{{company.name}}</p>
 								<p>{{company.formattedCreateAt}}</p>
 							</div>
+						</div>
+						<div class="update-company">
+							<form action="/update/company/{{company.id}}" method="get">
+								<button class="btn-validate-update">Modifier</button>
+							</form>
 						</div>
 					</div>
 

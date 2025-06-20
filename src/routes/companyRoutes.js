@@ -11,4 +11,7 @@ router.post('/login', companyController.postLogin)
 
 router.get('/logout', companyController.getLogout)
 
+router.get('/update/company/:id', companyController.getUpdateCompany)
+router.post('/update/company/:id', companyController.postUpdateCompany)
+
 module.exports = router
