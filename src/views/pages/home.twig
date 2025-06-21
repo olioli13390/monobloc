@@ -47,7 +47,6 @@
 
 			<section id="display-board">
 				<div id="display-board-container">
-					<span class="separate"></span>
 					<div id="company-info">
 						<div class="company-info-container">
 							<h4>Vos informations</h4>
@@ -67,13 +66,13 @@
 						</div>
 					</div>
 
-					{% if worker or computer or file %}
-						<h4>Ajouté récemment</h4>
+					{% if workers or computer or file %}
+						<h4>Ajoutés récemment</h4>
 					{% endif %}
 
 
 					<div id="recent-add">
-						{% if worker %}
+						{% if workers %}
 							<div class="recent-add-workers">
 								<div class="recent-container">
 									<h4>Salariés</h4>
@@ -93,7 +92,7 @@
 							</div>
 						{% endif %}
 
-						{% if computer %}
+						{% if computers %}
 							<div class="recent-add-computers">
 								<div class="recent-container">
 									<h4>Ordinateurs</h4>
@@ -113,14 +112,14 @@
 							</div>
 						{% endif %}
 
-						{% if file %}
+						{% if files %}
 							<div class="recent-add-files">
 								<div class="recent-container">
 									<h4>Fichiers</h4>
 									<ul>
 										{% for file in files %}
 											<div class="file-info">
-												<li>{{file.filename}}</li>
+												<li>{{file.fileRename}}</li>
 												<li>
 													<p class="updload-date">Ajouté le
 														{{file.formattedUploadAt}}</p>
@@ -141,8 +140,8 @@
 							<div class="confirm-delete-modal-container">
 								<p>Etes-vous sûr de vouloir supprimer ?</p>
 								<div>
-									<button id="confirm-delete">Supprimer</button>
-									<button id="cancel">Annuler</button>
+									<button id="confirm-delete" class="btn-delete">Supprimer</button>
+									<button id="cancel" class="btn-back">Annuler</button>
 								</div>
 							</div>
 						</div>
@@ -180,12 +179,24 @@
 									{% for worker in workers %}
 
 										<tr>
-											<td>{{worker.lastName}}</td>
-											<td>{{worker.firstName}}</td>
-											<td>{{worker.gender}}</td>
-											<td>{{worker.age}}</td>
-											<td>{{worker.mail}}</td>
-											<td>{{worker.computer.adress}}</td>
+											<td>
+												<p>{{worker.lastName}}</p>
+											</td>
+											<td>
+												<p>{{worker.firstName}}</p>
+											</td>
+											<td>
+												<p>{{worker.gender}}</p>
+											</td>
+											<td>
+												<p>{{worker.age}}</p>
+											</td>
+											<td>
+												<p>{{worker.mail}}</p>
+											</td>
+											<td>
+												<p>{{worker.computer.adress}}</p>
+											</td>
 											<td>
 												<div class="btn-container">
 													<div>
@@ -228,9 +239,13 @@
 								<tbody>
 									{% for computer in computers %}
 										<tr>
-											<td>{{computer.adress}}</td>
+											<td>
+												<p>{{computer.adress}}</p>
+											</td>
 											{% if computer.worker %}
-												<td>{{computer.worker.firstName}}</td>
+												<td>
+													<p>{{computer.worker.firstName}}</p>
+												</td>
 											{% else %}
 												<td>-</td>
 											{% endif %}

@@ -1,6 +1,7 @@
 model File {
     id         Int      @id @default(autoincrement())
     filename   String
+    fileRename String?
     size       Int
     path       String
     uploadAt   DateTime @default(now())

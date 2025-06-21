@@ -150,7 +150,7 @@ html {
 
 .btn-validate-update {
     color: white;
-    background: #80cbad;
+    background: #ADD371;
     padding: 5px 5px;
     border: none;
     border-radius: 5px;
@@ -161,13 +161,13 @@ html {
 
 .btn-validate-update:hover {
     cursor: pointer;
-    background-color: #63A088;
+    background-color: rgb(29, 178, 78);
     transition: 0.1s ease;
 }
 
 .btn-delete {
     color: white;
-    background: #8a5a5632;
+    background: #8a5a5676;
     padding: 5px 5px;
     border: none;
     border-radius: 5px;
@@ -232,7 +232,7 @@ html {
     }
 
     input:focus {
-        border-color: #63A088;
+        border-color: rgb(29, 178, 78);
         transition: 0.1s ease;
     }
 
@@ -247,6 +247,6 @@ html {
 }
 
 .focusing {
-    background-color: #63a0889f;
+    background-color: #5EB950;
     color: white;
 }

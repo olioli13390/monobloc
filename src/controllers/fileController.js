@@ -49,15 +49,15 @@ exports.postUploadFile = async (req, res) => {
         const savedFile = await prisma.file.create({
             data: {
                 filename: req.file.filename,
+                fileRename: req.body.fileRename,
                 size: req.file.size,
                 path: req.file.path,
                 company_id: req.session.company.id
             }
-        });
+        })
 
-        // 🔽 Lire et importer les workers depuis le CSV
-        const workers = [];
-        const filePath = path.resolve(req.file.path);
+        const workers = []
+        const filePath = path.resolve(req.file.path)
 
         await new Promise((resolve, reject) => {
             fs.createReadStream(filePath)
@@ -71,11 +71,11 @@ exports.postUploadFile = async (req, res) => {
                             age: row.age ? parseInt(row.age, 10) : null,
                             gender: row.gender || null,
                             company_id: req.session.company.id
-                        });
+                        })
                     }
                 })
                 .on('end', resolve)
-                .on('error', reject);
+                .on('error', reject)
         });
 
         let created = 0;
@@ -88,20 +88,20 @@ exports.postUploadFile = async (req, res) => {
                         ...w,
                         password: passwordHash
                     }
-                });
-                created++;
+                })
+                created++
             }
         }
 
-        res.redirect('/');
+        res.redirect('/')
 
     } catch (error) {
-        console.log(error);
+        console.log(error)
         if (req.file) {
             fs.unlink(req.file.path, (err) => {
-                if (err) console.error('Erreur suppression fichier:', err);
+                if (err) console.error('Erreur suppression fichier:', err)
             });
         }
-        res.status(400).json({ error: error });
+        res.status(400).json({ error: error })
     }
-};
+}
