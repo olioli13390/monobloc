@@ -89,7 +89,11 @@ exports.getAddWorker = async (req, res) => { // affiche la page addworker
                 siret: req.session.company.siret
             },
             include: {
-                computers: true
+                computers: {
+                    include: {
+                        worker: true
+                    }
+                }
             }
         })
         res.render('pages/addworker.twig', { company: req.session.company, computers: company.computers, })
@@ -103,6 +107,6 @@ exports.getAddComputer = async (req, res) => { // affiche la page addcomputer
 
 }
 
-exports.getAddCsv = async (req, res) => {
+exports.getAddCsv = async (req, res) => { // affiche addcsv
     res.render("pages/addcsv.twig", { company: req.session.company })
 }

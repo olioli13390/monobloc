@@ -14,3 +14,27 @@ section {
 .form-instructions {
     margin: 0;
 }
+
+@media screen and (max-width: 360px) and (max-height: 740px) {
+
+    * {
+        margin: 0;
+    }
+
+    body {
+        overflow: hidden;
+
+    }
+
+    nav {
+        margin: 0;
+    }
+
+    main {
+        height: 70vh;
+    }
+
+    section {
+        padding: 0 20px;
+    }
+}

@@ -43,14 +43,13 @@ exports.postRegister = async (req, res) => { /// Créer une entreprise
                 })
             }
         }
-        const hashedPassword = await bcrypt.hash(password, 10)
 
         if (req.body.password == req.body.confirmPassword) {
             const company = await prisma.company.create({
                 data: {
                     status: req.body.status,
                     siret: req.body.siret,
-                    password: hashedPassword,
+                    password: req.body.password,
                     name: req.body.name,
                 }
             })
@@ -65,7 +64,6 @@ exports.getLogin = async (req, res) => { /// affiche login
     res.render("pages/login.twig")
 }
 
-
 exports.postLogin = async (req, res) => { /// authentification d'une entreprise
     try {
         const company = await prisma.company.findUnique({
@@ -73,6 +71,7 @@ exports.postLogin = async (req, res) => { /// authentification d'une entreprise
                 siret: req.body.siret
             }
         })
+
         if (company) {
             if (await bcrypt.compare(req.body.password, company.password)) {
                 req.session.company = company

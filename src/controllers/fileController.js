@@ -9,22 +9,21 @@ const { PrismaClient } = require('../../generated/prisma')
 const prisma = new PrismaClient()
 
 // Configuration du stockage
-const uploadDir = './uploads';
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
+const uploadDir = './uploads'
+
+fs.mkdirSync(uploadDir, { recursive: true })
 
 const storage = multer.diskStorage({
     destination: uploadDir,
     filename: (req, file, cb) => {
-        const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9);
-        cb(null, uniqueName + '.csv');
+        const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, uniqueName + '.csv')
     }
-});
+})
 
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB max
+    limits: { fileSize: 10 * 1024 * 1024 },
     fileFilter: (req, file, cb) => {
         const isCSV = file.mimetype === 'text/csv' ||
             file.mimetype === 'application/csv' ||
@@ -35,16 +34,16 @@ const upload = multer({
     }
 });
 
-exports.uploadSingle = upload.single('file'); 
+exports.uploadSingle = upload.single('file')
 
 exports.postUploadFile = async (req, res) => {
     try {
-        if (!req.file) throw { file: "Aucun fichier CSV fourni" };
+        if (!req.file) throw { file: "Aucun fichier CSV fourni" }
         if (!req.file.originalname.match(/\.csv$/i)) {
-            throw { file: "Le fichier doit avoir l'extension .csv" };
+            throw { file: "Le fichier doit avoir l'extension .csv" }
         }
         if (!req.session.company) {
-            throw { session: "Session entreprise requise" };
+            throw { session: "Session entreprise requise" }
         }
 
         const savedFile = await prisma.file.create({
@@ -81,7 +80,7 @@ exports.postUploadFile = async (req, res) => {
                 })
                 .on('end', resolve)
                 .on('error', reject)
-        });
+        })
 
         let created = 0;
         for (const w of workers) {

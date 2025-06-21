@@ -93,3 +93,20 @@ exports.postUpdateComputer = async (req, res) => { // post update computer
         })
     }
 }
+
+exports.dissociateComputer = async (req, res) => { ///dissocie computer
+    try {
+        const computer = await prisma.computer.update({
+            where: {
+                id: parseInt(req.params.id)
+            },
+            data: {
+                worker_id: null
+            }
+        });
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+}

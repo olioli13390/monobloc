@@ -63,20 +63,17 @@
 							<input type="radio" id="man" name="gender" value="Homme">
 						</div>
 					</div>
-
 					<div id="computer-choice">
+						<label for="computer">Choisissez un ordinateur :</label>
 						<select name="computer" id="computer">
 							<option value="">Aucun</option>
 							{% for computer in computers %}
-								{% if not computer.worker %}
+								{% if computer.worker is null %}
 									<option value="{{computer.id}}">{{computer.adress}}</option>
 								{% endif %}
-
-
 							{% endfor %}
 						</select>
 					</div>
-
 					<div class="btn-container">
 						<button class="btn-validate-update">
 							{% if worker %}

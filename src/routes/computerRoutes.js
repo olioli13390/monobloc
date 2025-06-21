@@ -11,5 +11,6 @@ router.get("/update/computer/:id", authguard, computerController.getUpdateComput
 
 router.post("/update/computer/:id", authguard, computerController.postUpdateComputer)
 
+router.post("/dissociate/computer/:id", authguard, computerController.dissociateComputer);
 
 module.exports = router

@@ -50,7 +50,7 @@ exports.postWorker = async (req, res) => { // créer worker
                 lastName: req.body.lastName,
                 mail: req.body.mail,
                 password: req.body.password,
-                age: parseInt(req.body.age, 10),
+                age: parseInt(req.body.age),
                 gender: req.body.gender,
                 company_id: req.session.company.id,
 
@@ -95,7 +95,11 @@ exports.getUpdateWorker = async (req, res) => { // affiche formulaire modif
                 siret: req.session.company.siret
             },
             include: {
-                computers: true
+                computers: {
+                    include: {
+                        worker: true
+                    }
+                }
             }
         })
         res.render("pages/addworker.twig", { worker, company: req.session.company, computers: company.computers })
@@ -162,10 +166,5 @@ exports.updateWorker = async (req, res) => { // update worker
         res.redirect("/")
     } catch (error) {
         res.render("pages/addworker.twig")
-        const worker = await prisma.worker.findUnique({
-            where: {
-                id: parseInt(req.params.id)
-            }
-        })
     }
 }
