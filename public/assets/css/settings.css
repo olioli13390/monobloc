@@ -32,6 +32,16 @@ body {
     }
 }
 
+tr {
+    padding: 2px;
+    border-radius: 5px;
+
+}
+
+tr:hover:not(.header) {
+    background: #56638a10;
+}
+
 header {
     height: 10%;
     width: 100%;

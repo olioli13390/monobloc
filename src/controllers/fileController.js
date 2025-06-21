@@ -1,11 +1,12 @@
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
-const csv = require('csv-parser');
-const bcrypt = require('bcrypt');
-const { PrismaClient } = require('../../generated/prisma');
+const multer = require('multer')
+const path = require('path')
+const fs = require('fs')
+const fsPromises = require('fs').promises
+const csv = require('csv-parser')
+const bcrypt = require('bcrypt')
+const { PrismaClient } = require('../../generated/prisma')
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 // Configuration du stockage
 const uploadDir = './uploads';
@@ -34,7 +35,7 @@ const upload = multer({
     }
 });
 
-exports.uploadSingle = upload.single('file');
+exports.uploadSingle = upload.single('file'); 
 
 exports.postUploadFile = async (req, res) => {
     try {
@@ -59,7 +60,7 @@ exports.postUploadFile = async (req, res) => {
         const workers = []
         const filePath = path.resolve(req.file.path)
         const capitalize = (str) => {
-            
+
             return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
         }
 
@@ -107,5 +108,34 @@ exports.postUploadFile = async (req, res) => {
             });
         }
         res.status(400).json({ error: error })
+    }
+}
+
+exports.deleteFile = async (req, res) => {
+    try {
+        const file = await prisma.file.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+
+        const filePath = path.join(__dirname, '../../uploads', file.filename)
+
+        try {
+            await fsPromises.unlink(filePath);
+            console.log(`Fichier supprimé: ${file.filename}`)
+        } catch (err) {
+            console.log(`Fichier physique non trouvé: ${file.filename}`, err.message)
+        }
+
+        await prisma.file.delete({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
     }
 }

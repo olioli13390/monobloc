@@ -269,15 +269,6 @@ main {
                 padding: 5px;
             }
 
-            tr {
-                padding: 2px;
-                border-radius: 5px;
-
-            }
-
-            tr:hover:not(.header) {
-                background: #56638a10;
-            }
         }
     }
 
@@ -343,14 +334,6 @@ main {
             .header {
                 background: #56638aaf;
                 border-radius: 5px;
-            }
-
-            tr {
-                border-bottom: 1px solid black;
-            }
-
-            tr:hover {
-                background: #56638a10;
             }
 
             th {

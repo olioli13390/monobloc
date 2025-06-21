@@ -29,6 +29,9 @@
 								<li id="computer-list">
 									<p>Ordinateurs</p>
 								</li>
+								<li id="file-list">
+									<p>Fichiers</p>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -270,11 +273,41 @@
 						</div>
 					</div>
 				</section>
+				<section id="display-files" class="hidden">
+					<div class="display-files-container">
+						<h3>Liste des fichiers</h3>
+						<div class="tab-container">
+							<table>
+								<thead>
+									<tr class="header">
+										<th>Nom du fichier</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for file in files %}
+										<tr>
+											<td>
+												<p>{{file.fileRename}}</p>
+											</td>
+											<td>
+												<div class="btn-container">
+													<div>
+														<form action="/delete/file/{{file.id}}" method="post">
+															<button class="btn-delete">Supprimer</button>
+														</form>
+													</div>
+												</div>
+											</td>
+
+										</tr>
+									</td>
+								</tbody>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
-		</main>
-	{% endblock %}
-	{% block script %}
-		<script src="/assets/js/modal.js"></script>
-		<script src="/assets/js/searchWorker.js"></script>
-		<script src="/assets/js/confirmDeleteWorker.js"></script>
-	{% endblock %}
+		</div>
+	</section>
+</div></main>{% endblock %}{% block script %}<script src="/assets/js/modal.js"></script><script src="/assets/js/searchWorker.js"></script><script src="/assets/js/confirmDeleteWorker.js"></script>{% endblock %}
