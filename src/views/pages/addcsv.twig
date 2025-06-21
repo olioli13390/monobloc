@@ -2,6 +2,7 @@
 
 {% block style %}
 	<link rel="stylesheet" href="/assets/css/settings.css">
+	<link rel="stylesheet" href="/assets/css/addcsv.css">
 {% endblock %}
 
 {% block title %}
@@ -12,18 +13,23 @@
 	<main>
 		<section id="add-file">
 			<form action="" method="post" enctype="multipart/form-data">
-				<div>
+				<h4>Ajoutez un CSV</h4>
+				<div class="file-input">
 					<label for="file">Fichier CSV :</label>
-					<input type="file" name="file" id="file" accept=".csv" required>
+					<input type="file" name="file" accept=".csv" required>
 				</div>
 
-				<div>
+				<div class="file-input">
 					<label for="fileRename">Nouveau nom du fichier</label>
-					<input type="text" name="fileRename" id="fileRename" required>
+					<input type="text" name="fileRename" id="fileRename" required placeholder="Ajoutez un nom au fichier">
 				</div>
-
-				<button type="submit">Envoyer fichier CSV</button>
+				<button type="submit" class="btn-validate-update">Envoyer</button>
 			</form>
 		</section>
+		<div class="btn-container">
+			<div class="btn-back">
+				<a href="/">Retour</a>
+			</div>
+		</div>
 	</main>
 {% endblock %}

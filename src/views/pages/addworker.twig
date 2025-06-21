@@ -68,7 +68,11 @@
 						<select name="computer" id="computer">
 							<option value="">Aucun</option>
 							{% for computer in computers %}
-								<option value="{{computer.id}}">{{computer.adress}}</option>
+								{% if not computer.worker %}
+									<option value="{{computer.id}}">{{computer.adress}}</option>
+								{% endif %}
+
+
 							{% endfor %}
 						</select>
 					</div>

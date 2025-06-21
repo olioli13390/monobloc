@@ -6,8 +6,6 @@ main {
     }
 }
 
-
-
 #table-views {
     border-right: 2px solid #56638aaf;
     width: 20%;
@@ -82,6 +80,7 @@ main {
 
         #company-info {
             border-radius: 5px;
+            margin-bottom: 40px;
 
             h4 {
                 margin-block-start: 1em;
@@ -250,10 +249,6 @@ main {
         background: #56638aaf;
     }
 
-    .header:hover {
-        background: #56638aaf;
-    }
-
     .tab-container {
         padding: 10px;
 
@@ -280,7 +275,7 @@ main {
 
             }
 
-            tr:hover {
+            tr:hover:not(.header) {
                 background: #56638a10;
             }
         }

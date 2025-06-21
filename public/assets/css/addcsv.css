@@ -1,0 +1,44 @@
+body {
+    height: 100vh;
+
+    main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        #add-file {
+            background: white;
+            box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
+            border-radius: 5px;
+
+            .file-input {
+                padding: 10px;
+            }
+
+            form {
+                text-align: center;
+
+                .btn-validate-update {
+                    margin-bottom: 20px;
+                }
+
+                #fileRename {
+                    border: none;
+                    border-radius: 3px;
+                    outline: none;
+                    transition: 0.1s ease;
+                    padding: 5px;
+                }
+            }
+
+            #fileRename:focus {
+                outline: 1px solid #0EB14E;
+                transition: 0.1s ease;
+
+            }
+
+        }
+    }
+}

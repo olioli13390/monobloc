@@ -58,6 +58,10 @@ exports.postUploadFile = async (req, res) => {
 
         const workers = []
         const filePath = path.resolve(req.file.path)
+        const capitalize = (str) => {
+            
+            return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        }
 
         await new Promise((resolve, reject) => {
             fs.createReadStream(filePath)
@@ -65,11 +69,11 @@ exports.postUploadFile = async (req, res) => {
                 .on('data', (row) => {
                     if (row.firstName && row.lastName && row.mail) {
                         workers.push({
-                            firstName: row.firstName.trim(),
-                            lastName: row.lastName.trim(),
+                            firstName: capitalize(row.firstName.trim()),
+                            lastName: capitalize(row.lastName.trim()),
                             mail: row.mail.trim().toLowerCase(),
                             age: row.age ? parseInt(row.age, 10) : null,
-                            gender: row.gender || null,
+                            gender: capitalize(row.gender) || null,
                             company_id: req.session.company.id
                         })
                     }

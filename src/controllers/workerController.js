@@ -107,32 +107,33 @@ exports.getUpdateWorker = async (req, res) => { // affiche formulaire modif
 exports.updateWorker = async (req, res) => { // update worker
     try {
         const { firstName, lastName, mail, password, age, gender, computer } = req.body
+
         if (!req.body.firstName.match(/^[A-ZÀ-ÿ][a-zà-ÿ]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     firstName: "Prénom invalide"
-                }, worker: { ...req.body, id: req.params.id, password }
+                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company
             })
         }
         if (!req.body.lastName.match(/^[A-ZÀ-ÿ][a-zà-ÿ]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     lastName: "Nom invalide"
-                }, worker: { ...req.body, id: req.params.id, password }
+                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company
             })
         }
         if (!req.body.mail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     mail: "Email invalide"
-                }, worker: { ...req.body, id: req.params.id, password }
+                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company
             })
         }
         if (!req.body.age.match(/^\d+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     age: "Age invalide"
-                }, worker: { ...req.body, id: req.params.id }
+                }, worker: { ...req.body, id: req.params.id }, company: req.session.company
             })
         }
         const worker = await prisma.worker.update({
@@ -160,8 +161,7 @@ exports.updateWorker = async (req, res) => { // update worker
         })
         res.redirect("/")
     } catch (error) {
-        console.log(error);
-
+        res.render("pages/addworker.twig")
         const worker = await prisma.worker.findUnique({
             where: {
                 id: parseInt(req.params.id)
