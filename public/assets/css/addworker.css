@@ -52,3 +52,9 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 360px) and (max-height: 740px) {
+    .form-container {
+        margin: auto;
+    }
+}

@@ -9,15 +9,14 @@ body {
         flex-direction: column;
 
         #add-file {
-            background: white;
-            box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
-            border-radius: 5px;
-
             .file-input {
                 padding: 10px;
             }
 
             form {
+                box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
+                border-radius: 5px;
+                background: white;
                 text-align: center;
 
                 .btn-validate-update {
@@ -38,7 +37,15 @@ body {
                 transition: 0.1s ease;
 
             }
-
         }
+    }
+}
+
+
+
+@media screen and (max-width: 360px) and (max-height: 740px) {
+    #add-file {
+        margin-bottom: 20px;
+        padding: 0 20px;
     }
 }

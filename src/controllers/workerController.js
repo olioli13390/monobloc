@@ -36,11 +36,12 @@ exports.postWorker = async (req, res) => { // créer worker
                 }
             })
         }
-        if (!req.body.age.match(/^\d+$/)) {
+
+        if (!req.body.age.match(/^[1-9][0-9]?$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
-                    age: "Age invalide"
-                }
+                    age: "Âge invalide"
+                },
             })
         }
 
@@ -50,7 +51,7 @@ exports.postWorker = async (req, res) => { // créer worker
                 lastName: req.body.lastName,
                 mail: req.body.mail,
                 password: req.body.password,
-                age: parseInt(req.body.age),
+                age: (req.body.age, 10),
                 gender: req.body.gender,
                 company_id: req.session.company.id,
 

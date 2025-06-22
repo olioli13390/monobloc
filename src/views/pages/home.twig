@@ -10,6 +10,38 @@
 
 {% block main %}
 	<main>
+
+		<div class="burger-menu">
+			<div class="burger-icon">☰</div>
+			<div class="burger-menu-content">
+				<div class="burger-title">
+					<h3>GestInfoPro</h3>
+				</div>
+				<ul class="burger-menu-list">
+					<li id="board" class="focusing">
+						<p>Tableau de board</p>
+					</li>
+					<li id="worker-list">
+						<p>Salariés</p>
+					</li>
+					<li id="computer-list">
+						<p>Ordinateurs</p>
+					</li>
+					<li id="file-list">
+						<p>Fichiers</p>
+					</li>
+				</ul>
+
+				<div class="burger-log">
+					{% if company %}
+						<a id="logout" href="/logout">Déconnexion</a>
+					{% else %}
+						<a id="login" href="/login">Se connecter</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
 		<div id="table-views">
 			<section id="tab-choice">
 				<div class="tab-choice-container">
@@ -310,4 +342,4 @@
 			</div>
 		</div>
 	</section>
-</div></main>{% endblock %}{% block script %}<script src="/assets/js/modal.js"></script><script src="/assets/js/searchWorker.js"></script><script src="/assets/js/confirmDeleteWorker.js"></script>{% endblock %}
+</div></main>{% endblock %}{% block script %}<script src="/assets/js/modal.js"></script><script src="/assets/js/searchWorker.js"></script><script src="/assets/js/confirmDeleteWorker.js"></script><script src="/assets/js/burger.js"></script>{% endblock %}

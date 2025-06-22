@@ -2,8 +2,16 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    flex-direction: column;
+    height: 100vh;
+}
 
+.form-container {
+    margin-bottom: 40px;
+}
+
+.btn-back {
+    margin-top: 0;
 }
 
 .btn-validate-update {
@@ -23,18 +31,22 @@ section {
 
     body {
         overflow: hidden;
-
-    }
-
-    nav {
-        margin: 0;
+        text-align: center;
     }
 
     main {
-        height: 70vh;
+        margin: auto;
     }
 
-    section {
-        padding: 0 20px;
+    #register {
+        display: none;
+    }
+
+    header {
+        margin-top: 20px;
+
+        h1 {
+            margin-left: 10px;
+        }
     }
 }

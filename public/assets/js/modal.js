@@ -7,6 +7,8 @@ const workerList = document.getElementById('worker-list')
 const computerList = document.getElementById('computer-list')
 const fileList = document.getElementById('file-list')
 
+const menuContent = document.querySelector('.burger-menu-content')
+
 board.addEventListener("click", () => {
     board.classList.add("focusing")
     computerList.classList.remove("focusing")
@@ -17,6 +19,8 @@ board.addEventListener("click", () => {
     displayComputers.classList.add('hidden')
     displayWorkers.classList.add('hidden')
     displayFiles.classList.add('hidden')
+
+    menuContent.classList.remove('active')
 })
 
 workerList.addEventListener("click", () => {
@@ -29,6 +33,8 @@ workerList.addEventListener("click", () => {
     displayComputers.classList.add('hidden')
     displayBoard.classList.add('hidden')
     displayFiles.classList.add('hidden')
+
+    menuContent.classList.remove('active')
 })
 
 computerList.addEventListener("click", () => {
@@ -42,6 +48,7 @@ computerList.addEventListener("click", () => {
     displayBoard.classList.add('hidden')
     displayFiles.classList.add('hidden')
 
+    menuContent.classList.remove('active')
 })
 
 fileList.addEventListener('click', () => {
@@ -54,4 +61,6 @@ fileList.addEventListener('click', () => {
     displayComputers.classList.add('hidden')
     displayWorkers.classList.add('hidden')
     displayBoard.classList.add('hidden')
+
+    menuContent.classList.remove('active')
 })
