@@ -18,16 +18,16 @@
 					<h3>GestInfoPro</h3>
 				</div>
 				<ul class="burger-menu-list">
-					<li id="board" class="focusing">
+					<li id="board-burger" class="focusing">
 						<p>Tableau de board</p>
 					</li>
-					<li id="worker-list">
+					<li id="worker-list-burger">
 						<p>Salariés</p>
 					</li>
-					<li id="computer-list">
+					<li id="computer-list-burger">
 						<p>Ordinateurs</p>
 					</li>
-					<li id="file-list">
+					<li id="file-list-burger">
 						<p>Fichiers</p>
 					</li>
 				</ul>
@@ -117,7 +117,7 @@
 												<li>{{worker.firstName}}
 													{{worker.lastName}}</li>
 												<li>
-													<p class="updload-date">{{worker.formattedWorkerCreateAt}}</p>
+													<p class="updload-date">Ajouté le {{worker.formattedWorkerCreateAt}}</p>
 												</li>
 												<span class="line"></span>
 											</div>
@@ -137,7 +137,7 @@
 												<li>{{computer.adress}}</li>
 												<li>
 													<p class="updload-date">Ajouté le
-														{{computer.formattedUploadAt}}</p>
+														{{computer.formattedComputerCreateAt}}</p>
 												</li>
 												<span class="line"></span>
 											</div>

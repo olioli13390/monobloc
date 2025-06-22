@@ -34,7 +34,7 @@ body {
 
 tr {
     padding: 2px;
-    border-radius: 5px;
+    border-radius: 2px;
 
 }
 
@@ -163,7 +163,7 @@ html {
     background: #ADD371;
     padding: 5px 5px;
     border: none;
-    border-radius: 5px;
+    border-radius: 2px;
     transition: 0.1s ease;
     width: 100px;
     margin-top: 20px;
@@ -180,7 +180,7 @@ html {
     background: #8a5a5676;
     padding: 5px 5px;
     border: none;
-    border-radius: 5px;
+    border-radius: 2px;
     transition: 0.1s ease;
     width: 100px;
 }
@@ -194,7 +194,7 @@ html {
 .btn-back {
     a {
         background-color: #56638aaf;
-        border-radius: 5px;
+        border-radius: 2px;
         padding: 5px 10px;
         text-decoration: none;
         color: white;
@@ -203,7 +203,7 @@ html {
 
 .form-container {
     background-color: white;
-    border-radius: 5px;
+    border-radius: 2px;
     width: 400px;
     box-shadow: 3px 3px 3px 3px rgba(171, 171, 171, 0.2);
     text-align: center;

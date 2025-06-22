@@ -5,10 +5,33 @@ main {
 section {
     text-align: center;
 
+    .form-container {
+        margin: auto;
+    }
+
     h2 {
         font-weight: 500;
     }
 
+    button {
+        margin-bottom: 20px;
+    }
+
+    .btn-dissociate {
+        color: white;
+        background: #8a5a5676;
+        padding: 5px 5px;
+        border: none;
+        border-radius: 2px;
+        transition: 0.1s ease;
+        width: 100px;
+    }
+
+    .btn-dissociate:hover {
+        cursor: pointer;
+        background-color: #8a5a56;
+        transition: 0.1s ease;
+    }
 }
 
 @media screen and (max-width: 360px) and (max-height: 740px) {

@@ -24,6 +24,7 @@ exports.getHome = async (req, res) => { // affiche dashboard + load workers
                 }
             }
         })
+
         const formattedCreateAt = company.createdAt.toLocaleDateString('fr-FR', {
             day: '2-digit',
             month: '2-digit',
@@ -57,6 +58,18 @@ exports.getHome = async (req, res) => { // affiche dashboard + load workers
             }
         })
 
+        const formattedComputers = company.computers.map(computer => {
+            const formattedComputerCreateAt = computer.createdAt.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            return {
+                ...computer,
+                formattedComputerCreateAt: formattedComputerCreateAt
+            };
+        });
+
         const files = await prisma.file.findMany({
             where: {
                 company_id: company.id
@@ -76,7 +89,7 @@ exports.getHome = async (req, res) => { // affiche dashboard + load workers
             })
         }))
 
-        res.render('pages/home.twig', { company: company, workers: company.workers, computers: company.computers, recentWorkers: formattedRecentWorkers, files: formattedFiles })
+        res.render('pages/home.twig', { company: company, workers: company.workers, computers: company.computers, recentWorkers: formattedRecentWorkers, files: formattedFiles, computers: formattedComputers })
     } catch (error) {
         console.log(error);
     }
