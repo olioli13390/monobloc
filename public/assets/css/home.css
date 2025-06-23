@@ -211,12 +211,23 @@ main {
         }
     }
 
-    #searchInput {
+    #searchInputWorkers {
         padding: 7px;
         border: none;
     }
 
-    #searchInput:focus {
+    #searchInputWorkers:focus {
+        border: 2px solid #63A088;
+        border-radius: 2px;
+        outline: none;
+    }
+
+    #searchInputComputers {
+        padding: 7px;
+        border: none;
+    }
+
+    #searchInputComputers:focus {
         border: 2px solid #63A088;
         border-radius: 2px;
         outline: none;

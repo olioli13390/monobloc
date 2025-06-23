@@ -196,7 +196,7 @@
 								</a>
 							</div>
 							<div class="search-container">
-								<input type="text" id="searchInput" placeholder="Rechercher un salarié...">
+								<input type="text" id="searchInputWorkers" placeholder="Rechercher un salarié...">
 							</div>
 						</div>
 
@@ -264,7 +264,9 @@
 								<div class="btn-add">Ajouter un ordinateur</div>
 							</a>
 						</div>
-
+						<div class="search-container">
+							<input type="text" id="searchInputComputers" placeholder="Rechercher un ordinateur...">
+						</div>
 						<div class="tab-container">
 							<table>
 								<thead>
@@ -274,7 +276,7 @@
 										<th>Action</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="computers-table-body">
 									{% for computer in computers %}
 										<tr>
 											<td>
@@ -345,4 +347,4 @@
 			</div>
 		</div>
 	</section>
-</div></main>{% endblock %}{% block script %}<script src="/assets/js/modal.js"></script><script src="/assets/js/searchWorker.js"></script><script src="/assets/js/confirmDeleteWorker.js"></script><script src="/assets/js/burger.js"></script>{% endblock %}
+</div></main>{% endblock %}{% block script %}<script src="/assets/js/modal.js"></script><script src="/assets/js/searchWorker.js"></script><script src="/assets/js/confirmDeleteWorker.js"></script><script src="/assets/js/burger.js"></script><script src="/assets/js/searchComputer.js"></script>{% endblock %}

@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInputWorkers')
-    const workersTableBody = document.getElementById('workers-table-body')
-    const rows = workersTableBody.getElementsByTagName('tr')
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInputComputers')
+    const computersTableBody = document.getElementById('computers-table-body')
+    const rows = computersTableBody.getElementsByTagName('tr')
 
-    searchInput.addEventListener('keyup', function() {
+    searchInput.addEventListener('keyup', function () {
         const searchTerm = searchInput.value.toLowerCase()
 
         for (let i = 0; i < rows.length; i++) {
