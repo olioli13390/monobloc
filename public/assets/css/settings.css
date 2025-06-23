@@ -190,6 +190,13 @@ html {
 }
 
 .btn-back {
+    border: none;
+    background-color: #56638aaf;
+    border-radius: 2px;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+
     a {
         background-color: #56638aaf;
         border-radius: 2px;
@@ -197,6 +204,11 @@ html {
         text-decoration: none;
         color: white;
     }
+}
+
+.btn-back:hover {
+    cursor: pointer;
+     background-color: #56638ada;
 }
 
 .form-container {

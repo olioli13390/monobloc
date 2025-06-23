@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let j = 0; j < cells.length; j++) {
                 const cell = cells[j];
                 if (cell) {
-                    const text = cell.textContent.toLowerCase();
+                    const text = cell.textContent.toLowerCase()
                     if (text.includes(searchTerm)) {
                         matches = true
                         break
