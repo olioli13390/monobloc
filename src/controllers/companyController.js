@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt")
 const hashPasswordExtensions = require("../services/extensions/hashPassword")
 const prisma = new PrismaClient({}).$extends(hashPasswordExtensions)
 const session = require("express-session")
+const { error } = require('console')
 
 
 exports.getRegister = async (req, res) => { /// Affiche le register
@@ -54,9 +55,11 @@ exports.postRegister = async (req, res) => { /// Créer une entreprise
                 }
             })
             res.redirect("/login")
-        } else throw ({ confirmPassword: "Vérification de mot de passe incorrecte" })
+        } else {
+            return res.render('pages/register.twig')
+
+        }
     } catch (error) {
-        console.log(error)
     }
 }
 
@@ -122,17 +125,34 @@ exports.postUpdateCompany = async (req, res) => { /// poste la modification
     try {
 
         if (!req.body.status.match(/^.+$/)) {
-            throw { status: "Statut invalide" }
+            return res.render('pages/register.twig', {
+                error: {
+                    status: "Raison sociale incorrecte"
+                },
+                company: { ...req.body }, editMod: false
+            })
         }
         if (!req.body.siret.match(/^\d{14}$/)) {
-            throw { siret: "SIRET invalide" }
+            return res.render('pages/register.twig', {
+                error: {
+                    siret: "Siret invalide"
+                }, company: { ...req.body }, editMod: false
+            })
         }
         if (!req.body.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
-            throw { password: "Mot de passe invalide" }
+            return res.render('pages/register.twig', {
+                error: {
+                    password: "Mauvais mot de passe"
+                }, company: { ...req.body }, editMod: false
+            })
         }
         if (req.body.name) {
             if (!req.body.name.match(/^[a-zA-Z0-9\s\-']+$/)) {
-                throw { name: "Nom invalide" }
+                return res.render('pages/register.twig', {
+                    error: {
+                        name: "Nom incorrect"
+                    }, company: { ...req.body }, editMod: false
+                })
             }
         }
 
@@ -151,7 +171,10 @@ exports.postUpdateCompany = async (req, res) => { /// poste la modification
                 }
             })
             res.redirect("/")
-        } else throw ({ confirmPassword: "Vérification de mot de passe incorrecte" })
+        } else {
+            req.session.company = req.body
+            return res.render('pages/register.twig', { company: req.session.company, error: { log: "Confirmez le mot de passe" } })
+        }
 
     } catch (error) {
         console.log(error);

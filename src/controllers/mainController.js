@@ -109,7 +109,7 @@ exports.getAddWorker = async (req, res) => { // affiche la page addworker
                 }
             }
         })
-        res.render('pages/addworker.twig', { company: req.session.company, computers: company.computers, })
+        res.render('pages/addworker.twig', { company: req.session.company, computers: company.computers })
     } catch (error) {
         console.log(error);
     }

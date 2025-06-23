@@ -101,12 +101,10 @@ main {
 
                 .btn-validate-update {
                     margin-top: 0;
-                    background: #8a5a5683;
-                    color: white;
                 }
 
                 .btn-validate-update:hover {
-                    background-color: #8a5a56;
+                    background-color: #8a5a5683;
                     color: white;
                 }
             }
@@ -205,7 +203,7 @@ main {
                         }
 
                         .btn-add:hover {
-                            color: #30B44E;
+                            color: #B3D3A8;
                             transition: color 0.2s;
                         }
                     }
@@ -311,7 +309,7 @@ main {
             }
 
             .btn-add:hover {
-                color: #30B44E;
+                color: #B3D3A8;
                 transition: color 0.2s;
             }
         }
@@ -365,6 +363,70 @@ main {
 
 .burger-menu {
     display: none;
+}
+
+@media screen and (max-width :740px) and (max-height:740px) {
+    .burger-menu {
+        display: block;
+    }
+
+    .burger-icon {
+        font-size: 2em;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+
+    .burger-menu-content {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80%;
+        background-color: #f9f9f9;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        padding: 50px 10px 10px;
+    }
+
+    .burger-menu-content.active {
+        display: block;
+    }
+
+    .burger-title {
+        margin-bottom: 20px;
+    }
+
+    .burger-menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .burger-menu-list li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .burger-menu-list li:last-child {
+        border-bottom: none;
+    }
+
+    .burger-log {
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .burger-log a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+    #table-views {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 360px) and (max-height: 740px) {

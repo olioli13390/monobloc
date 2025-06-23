@@ -154,30 +154,27 @@ header {
 }
 
 html {
-    background: url('../../assets/img/bg-main.jpg') center/cover;
+    background: url('../../assets/img/ChatGPT\ Image\ 23\ juin\ 2025\,\ 07_01_59.png') center/cover;
     background-attachment: fixed;
 }
 
 .btn-validate-update {
-    color: white;
-    background: #ADD371;
     padding: 5px 5px;
     border: none;
     border-radius: 2px;
     transition: 0.1s ease;
     width: 100px;
     margin-top: 20px;
+    background-color: none;
 }
 
 .btn-validate-update:hover {
     cursor: pointer;
-    background-color: rgb(29, 178, 78);
+    background: #B3D3A8;
     transition: 0.1s ease;
 }
 
 .btn-delete {
-    color: white;
-    background: #8a5a5676;
     padding: 5px 5px;
     border: none;
     border-radius: 2px;
@@ -187,7 +184,8 @@ html {
 
 .btn-delete:hover {
     cursor: pointer;
-    background-color: #8a5a56;
+    color: white;
+    background-color: #8a5a56d7;
     transition: 0.1s ease;
 }
 
@@ -254,21 +252,11 @@ html {
 }
 
 .focusing {
-    background-color: #5EB950;
+    background-color: #B3D3A8;
     color: white;
 }
 
-@media screen and (max-width: 360px) and (max-height: 740px) {
-    header {
-        nav {
-            margin: 10px 2px;
-        }
-    }
 
-    section {
-        margin-top: 40px;
-    }
-}
 
 @media screen and (max-width: 360px) and (max-height: 740px) {
     .form-container {

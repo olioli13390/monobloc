@@ -7,41 +7,47 @@ const session = require("express-session")
 
 
 exports.postWorker = async (req, res) => { // créer worker
+    const { firstName, lastName, mail, password, age } = req.body
     try {
         if (!req.body.firstName.match(/^[A-ZÀ-ÿ][a-zà-ÿ]+$/)) {
             return res.render("pages/addworker.twig", {
+                company: req.session.company,
                 error: {
                     firstName: "Prénom invalide"
-                }
+                }, worker: { ...req.body }
             })
         }
         if (!req.body.lastName.match(/^[A-ZÀ-ÿ][a-zà-ÿ]+$/)) {
             return res.render("pages/addworker.twig", {
+                company: req.session.company,
                 error: {
                     lastName: "Nom invalide"
-                }
+                }, worker: { ...req.body }
             })
         }
         if (!req.body.mail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
             return res.render("pages/addworker.twig", {
+                company: req.session.company,
                 error: {
                     mail: "Email invalide"
-                }
+                }, worker: { ...req.body }
             })
         }
         if (!req.body.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
             return res.render("pages/addworker.twig", {
+                company: req.session.company,
                 error: {
                     password: "Mot de passe invalide"
-                }
+                }, worker: { ...req.body }
             })
         }
 
         if (!req.body.age.match(/^[1-9][0-9]?$/)) {
             return res.render("pages/addworker.twig", {
+                company: req.session.company,
                 error: {
                     age: "Âge invalide"
-                },
+                }, worker: { ...req.body }
             })
         }
 
@@ -67,6 +73,7 @@ exports.postWorker = async (req, res) => { // créer worker
         })
         res.redirect("/")
     } catch (error) {
+        res.render('pages/addworker.twig', { company: req.session.company, error: { log: "error" } })
         console.log(error)
     }
 }
@@ -117,28 +124,28 @@ exports.updateWorker = async (req, res) => { // update worker
             return res.render("pages/addworker.twig", {
                 error: {
                     firstName: "Prénom invalide"
-                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company
+                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company, editMod: true
             })
         }
         if (!req.body.lastName.match(/^[A-ZÀ-ÿ][a-zà-ÿ]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     lastName: "Nom invalide"
-                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company
+                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company, editMod: true
             })
         }
         if (!req.body.mail.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     mail: "Email invalide"
-                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company
+                }, worker: { ...req.body, id: req.params.id, password }, company: req.session.company, editMod: true
             })
         }
         if (!req.body.age.match(/^\d+$/)) {
             return res.render("pages/addworker.twig", {
                 error: {
                     age: "Age invalide"
-                }, worker: { ...req.body, id: req.params.id }, company: req.session.company
+                }, worker: { ...req.body, id: req.params.id }, company: req.session.company, editMod: true
             })
         }
         const worker = await prisma.worker.update({

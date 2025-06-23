@@ -49,6 +49,8 @@ exports.getUpdateComputer = async (req, res) => { // affiche la modif
         const computer = await prisma.computer.findUnique({
             where: {
                 id: parseInt(req.params.id)
+            }, include: {
+                worker: true
             }
         })
         res.render('pages/addcomputer.twig', { computer, company: req.session.company })

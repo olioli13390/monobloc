@@ -15,8 +15,13 @@
 
 			<div class="form-container">
 
-				<form action={% if worker %} "/update/{{worker.id}}" {% else %} "" {% endif %} method="post">
-					<h4>Ajoutez un travailleur</h4>
+				<form action={% if editMod %} "/update/{{worker.id}}" {% else %} "" {% endif %} method="post">
+
+					{% if worker %}
+						<h4>Modifiez un travailleur</h4>
+					{% else %}
+						<h4>Ajoutez un travailleur</h4>
+					{% endif %}
 					{% if error.firstName %}
 						<p class="error">
 							{{error.firstName}}
@@ -77,7 +82,7 @@
 					</div>
 					<div class="btn-container">
 						<button class="btn-validate-update">
-							{% if worker %}
+							{% if editMod %}
 								Modifier
 							{% else %}
 								Valider

@@ -22,13 +22,17 @@
 				<form action="" method="post">
 					<div class="error">
 						{% if error.status %}
-							<p>{{error.status}}</p>
+							<p class="error">{{error.status}}</p>
 						{% elseif error.siret %}
-							<p>{{error.siret}}</p>
+							<p class="error">{{error.siret}}</p>
 						{% elseif error.password %}
-							<p>{{error.password}}</p>
+							<p class="error">{{error.password}}</p>
 						{% elseif error.name %}
-							<p>{{error.name}}</p>
+							<p class="error">{{error.name}}</p>
+						{% elseif {{error.log}}%}
+							<p class="error">
+								{{error.log}}
+							</p>
 						{% endif %}
 					</div>
 					<div class="input-label-containers">

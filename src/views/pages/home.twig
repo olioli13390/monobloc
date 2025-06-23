@@ -88,8 +88,10 @@
 							<div class="info-container">
 								<p>Bonjour,
 									{{company.status}}</p>
-								<p>Propriétaire :
-									{{company.name}}</p>
+								{% if company.name %}
+									<p>Propriétaire :
+										{{company.name}}</p>
+								{% endif %}
 								<p>Date de création :
 									{{company.formattedCreateAt}}</p>
 							</div>
@@ -117,7 +119,8 @@
 												<li>{{worker.firstName}}
 													{{worker.lastName}}</li>
 												<li>
-													<p class="updload-date">Ajouté le {{worker.formattedWorkerCreateAt}}</p>
+													<p class="updload-date">Ajouté le
+														{{worker.formattedWorkerCreateAt}}</p>
 												</li>
 												<span class="line"></span>
 											</div>
