@@ -72,7 +72,8 @@ exports.postUpdateComputer = async (req, res) => { // post update computer
             return res.render("pages/addcomputer.twig", {
                 error: {
                     adress: "Adresse MAC incorrecte"
-                }, computer: initialComputer
+                }, computer: initialComputer,
+                company: req.session.company
             })
         }
         const computer = await prisma.computer.update({

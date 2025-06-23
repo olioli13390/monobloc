@@ -17,7 +17,7 @@
 
 				<form action={% if editMod %} "/update/{{worker.id}}" {% else %} "" {% endif %} method="post">
 
-					{% if worker %}
+					{% if editMod %}
 						<h4>Modifiez un travailleur</h4>
 					{% else %}
 						<h4>Ajoutez un travailleur</h4>
@@ -34,7 +34,11 @@
 						<p class="error">
 							{{error.mail}}
 						</p>
-					{% elseif error.age %}
+					{% elseif {{error.password}} %}
+						<p class="error">
+							{{error.password}}
+						</p>
+					{% elseif {{error.age}} %}
 						<p class="error">
 							{{error.age}}
 						</p>

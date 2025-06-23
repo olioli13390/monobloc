@@ -29,9 +29,9 @@
 							<p class="error">{{error.password}}</p>
 						{% elseif error.name %}
 							<p class="error">{{error.name}}</p>
-						{% elseif {{error.log}}%}
+						{% elseif {{error.confirmPassword}}%}
 							<p class="error">
-								{{error.log}}
+								{{error.confirmPassword}}
 							</p>
 						{% endif %}
 					</div>

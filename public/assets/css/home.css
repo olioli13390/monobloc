@@ -1,14 +1,13 @@
 main {
     display: flex;
 
-
     h3 {
         font-size: 1.5em;
     }
 }
 
 #table-views {
-    border-right: 2px solid #56638aaf;
+    border-right: 1px solid #8FBF86;
     width: 20%;
     height: 100%;
     position: fixed;
@@ -77,7 +76,7 @@ main {
     margin-left: 20%;
 
     #display-board {
-        padding: 10px;
+        padding: 20px;
 
         #company-info {
             border-radius: 2px;

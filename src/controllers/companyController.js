@@ -13,26 +13,28 @@ exports.getRegister = async (req, res) => { /// Affiche le register
 
 exports.postRegister = async (req, res) => { /// Créer une entreprise
     try {
+
+        const { status, siret, password, name } = req.body
         if (!req.body.status.match(/^.+$/)) {
 
             return res.render('pages/register.twig', {
                 error: {
                     status: "Raison sociale incorrecte"
-                }
+                }, company: { ...req.body }
             })
         }
         if (!req.body.siret.match(/^\d{14}$/)) {
             return res.render('pages/register.twig', {
                 error: {
                     siret: "Siret incorrect, doit contenir 14 caractères"
-                }
+                }, company: { ...req.body }
             })
         }
         if (!req.body.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
             return res.render('pages/register.twig', {
                 error: {
                     password: "Mot de passe incorrect"
-                }
+                }, company: { ...req.body }
             })
         }
         if (req.body.name) {
@@ -40,7 +42,7 @@ exports.postRegister = async (req, res) => { /// Créer une entreprise
                 return res.render('pages/register.twig', {
                     error: {
                         name: "Nom incorrect"
-                    }
+                    }, company: { ...req.body }
                 })
             }
         }
@@ -56,7 +58,7 @@ exports.postRegister = async (req, res) => { /// Créer une entreprise
             })
             res.redirect("/login")
         } else {
-            return res.render('pages/register.twig')
+            return res.render('pages/register.twig', { error: { confirmPassword: "Les mots de passe ne correspondent pas" } })
 
         }
     } catch (error) {
@@ -173,7 +175,7 @@ exports.postUpdateCompany = async (req, res) => { /// poste la modification
             res.redirect("/")
         } else {
             req.session.company = req.body
-            return res.render('pages/register.twig', { company: req.session.company, error: { log: "Confirmez le mot de passe" } })
+            return res.render('pages/register.twig', { company: req.session.company, error: { confirmPassword: "Confirmez le mot de passe" } })
         }
 
     } catch (error) {
